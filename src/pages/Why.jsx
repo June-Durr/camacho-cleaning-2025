@@ -1,6 +1,4 @@
 import React from "react";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 
 const Why = () => {
   const reasons = [
@@ -206,7 +204,6 @@ const Why = () => {
 
   return (
     <div className="bg-white">
-      <Navbar />
       {/* Hero Section */}
       <div className="bg-blue-600 py-20">
         <div className="container mx-auto px-4">
@@ -1090,7 +1087,6 @@ const Why = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

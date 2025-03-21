@@ -1,13 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 
 const Residential = () => {
   return (
     <div className="min-h-screen bg-slate-50">
-      <Navbar />
-
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 py-16">
         <div className="container mx-auto px-6">
@@ -901,9 +897,6 @@ const Residential = () => {
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 };

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 const ServicesSection = () => {
   const [activeTab, setActiveTab] = useState("residential");
@@ -142,7 +140,6 @@ const ServicesSection = () => {
 
   return (
     <>
-      <Navbar />
       <div className="bg-white">
         {/* Hero Section */}
         <div className="bg-blue-600 py-20">
@@ -528,7 +525,6 @@ const ServicesSection = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

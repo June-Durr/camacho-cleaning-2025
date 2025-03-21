@@ -1,8 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
+import { v4 as uuidv4 } from "uuid"; // You'll need to install this package
+
+// AWS SDK imports
+import { API } from "aws-amplify"; // Assuming you're using AWS Amplify
 
 const QuoteForm = ({ isOpen, onClose }) => {
   // Form state
   const [formData, setFormData] = useState({
+    id: uuidv4(), // Generate a unique ID for each submission
     fullName: "",
     email: "",
     phone: "",
@@ -11,12 +16,13 @@ const QuoteForm = ({ isOpen, onClose }) => {
     propertySize: "",
     frequency: "weekly",
     message: "",
+    timestamp: new Date().toISOString(),
   });
 
-  // Form step state (now just 2 steps)
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState(null);
 
   const modalRef = useRef(null);
 
@@ -29,27 +35,64 @@ const QuoteForm = ({ isOpen, onClose }) => {
     }));
   };
 
-  // Handle step change explicitly
-  const goToStep = (stepNumber) => {
-    setCurrentStep(stepNumber);
+  // Handle explicit step navigation
+  const goToPreviousStep = () => {
+    setCurrentStep(1);
+  };
+
+  const goToNextStep = () => {
+    setCurrentStep(2);
+  };
+
+  // Submit form data to AWS
+  const submitToAWS = async (formData) => {
+    try {
+      // Option 1: Using AWS Amplify API
+      const response = await API.post("quoteFormApi", "/quotes", {
+        body: formData,
+      });
+
+      // Option 2: Direct to API Gateway (if not using Amplify)
+      // const response = await fetch('https://your-api-gateway-url.amazonaws.com/prod/quotes', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(formData)
+      // });
+      // if (!response.ok) throw new Error('Network response was not ok');
+
+      return response;
+    } catch (error) {
+      console.error("Error submitting form to AWS:", error);
+      throw error;
+    }
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Add timestamp for when the form is submitted
+      const dataToSubmit = {
+        ...formData,
+        timestamp: new Date().toISOString(),
+      };
+
+      // Submit to AWS
+      await submitToAWS(dataToSubmit);
+
+      // Show success message
       setIsSuccess(true);
 
-      // Reset after showing success message
+      // Reset form after delay
       setTimeout(() => {
         setIsSuccess(false);
         onClose();
         setCurrentStep(1);
         setFormData({
+          id: uuidv4(),
           fullName: "",
           email: "",
           phone: "",
@@ -58,9 +101,15 @@ const QuoteForm = ({ isOpen, onClose }) => {
           propertySize: "",
           frequency: "weekly",
           message: "",
+          timestamp: new Date().toISOString(),
         });
-      }, 2000);
-    }, 1000);
+      }, 3000);
+    } catch (err) {
+      setError("There was a problem submitting your form. Please try again.");
+      console.error("Form submission error:", err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Handle clicking outside the modal
@@ -80,24 +129,6 @@ const QuoteForm = ({ isOpen, onClose }) => {
     };
   }, [isOpen, onClose]);
 
-  // Handle keyboard escape key
-  useEffect(() => {
-    const handleEsc = (event) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener("keydown", handleEsc);
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleEsc);
-    };
-  }, [isOpen, onClose]);
-
-  // Prevent body scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -119,7 +150,7 @@ const QuoteForm = ({ isOpen, onClose }) => {
         className="bg-white rounded-lg shadow-xl w-full max-w-md md:max-w-lg mx-4 my-8"
       >
         <div className="relative">
-          {/* Header with blue gradient background */}
+          {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-t-lg p-6">
             <button
               type="button"
@@ -176,6 +207,13 @@ const QuoteForm = ({ isOpen, onClose }) => {
               </div>
             ) : (
               <>
+                {/* Error message if submission fails */}
+                {error && (
+                  <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+                    <p>{error}</p>
+                  </div>
+                )}
+
                 {/* Progress indicator - now just 2 steps */}
                 <div className="mb-6">
                   <div className="flex justify-between mb-2">
@@ -285,7 +323,7 @@ const QuoteForm = ({ isOpen, onClose }) => {
                     <div className="mt-6 flex justify-end">
                       <button
                         type="button"
-                        onClick={() => goToStep(2)}
+                        onClick={goToNextStep}
                         className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
                       >
                         Next
@@ -294,7 +332,7 @@ const QuoteForm = ({ isOpen, onClose }) => {
                   </div>
                 )}
 
-                {/* Step 2: Service Details */}
+                {/* Step 2: Service Details - Form wrapped here */}
                 {currentStep === 2 && (
                   <form onSubmit={handleSubmit}>
                     <div className="space-y-4">
@@ -403,7 +441,7 @@ const QuoteForm = ({ isOpen, onClose }) => {
                     <div className="mt-6 flex justify-between">
                       <button
                         type="button"
-                        onClick={() => goToStep(1)}
+                        onClick={goToPreviousStep}
                         className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50"
                       >
                         Back
