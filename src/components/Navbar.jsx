@@ -197,7 +197,9 @@ const Navbar = () => {
       </nav>
 
       {/* Quote Form Modal */}
-      <QuoteForm isOpen={isQuoteFormOpen} onClose={closeQuoteForm} />
+      {isQuoteFormOpen && (
+        <QuoteForm isOpen={isQuoteFormOpen} onClose={closeQuoteForm} />
+      )}
     </>
   );
 };

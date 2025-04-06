@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { v4 as uuidv4 } from "uuid"; // You'll need to install this package
-
-// AWS SDK imports
-import { API } from "aws-amplify"; // Assuming you're using AWS Amplify
+import { v4 as uuidv4 } from "uuid";
+import { API_ENDPOINT, SIMULATE_API } from "../aws-config";
 
 const QuoteForm = ({ isOpen, onClose }) => {
   // Form state
@@ -44,26 +42,35 @@ const QuoteForm = ({ isOpen, onClose }) => {
     setCurrentStep(2);
   };
 
-  // Submit form data to AWS
+  // Submit form data to AWS API Gateway
   const submitToAWS = async (formData) => {
     try {
-      // Option 1: Using AWS Amplify API
-      const response = await API.post("quoteFormApi", "/quotes", {
-        body: formData,
+      console.log("Submitting to API:", API_ENDPOINT);
+
+      const response = await fetch(`${API_ENDPOINT}/quotes`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
-      // Option 2: Direct to API Gateway (if not using Amplify)
-      // const response = await fetch('https://your-api-gateway-url.amazonaws.com/prod/quotes', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData)
-      // });
-      // if (!response.ok) throw new Error('Network response was not ok');
+      console.log("Response status:", response.status);
 
-      return response;
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Error response:", errorText);
+        throw new Error(
+          `HTTP error! status: ${response.status}, message: ${errorText}`
+        );
+      }
+
+      const data = await response.json();
+      return data;
     } catch (error) {
-      console.error("Error submitting form to AWS:", error);
-      throw error;
+      console.error("Detailed error submitting form:", error);
+      throw new Error(`Network error: ${error.message}`);
     }
   };
 
@@ -80,8 +87,23 @@ const QuoteForm = ({ isOpen, onClose }) => {
         timestamp: new Date().toISOString(),
       };
 
-      // Submit to AWS
-      await submitToAWS(dataToSubmit);
+      console.log("Form data to submit:", dataToSubmit);
+
+      let result;
+      if (SIMULATE_API) {
+        // Use simulation in development
+        console.log("DEVELOPMENT MODE: Simulating successful API submission");
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Fake delay
+        result = {
+          message: "Form submitted successfully (SIMULATION MODE)",
+          id: dataToSubmit.id,
+        };
+      } else {
+        // Use actual API
+        result = await submitToAWS(dataToSubmit);
+      }
+
+      console.log("Submission result:", result);
 
       // Show success message
       setIsSuccess(true);
@@ -105,44 +127,17 @@ const QuoteForm = ({ isOpen, onClose }) => {
         });
       }, 3000);
     } catch (err) {
-      setError("There was a problem submitting your form. Please try again.");
+      setError(
+        err.message ||
+          "There was a problem submitting your form. Please try again."
+      );
       console.error("Form submission error:", err);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Handle clicking outside the modal
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen, onClose]);
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
-
+  // Component render code
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
       <div
