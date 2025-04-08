@@ -17,6 +17,9 @@ const QuoteForm = ({ isOpen, onClose }) => {
     timestamp: new Date().toISOString(),
   });
 
+  // New state for validation errors
+  const [errors, setErrors] = useState({});
+
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -24,13 +27,70 @@ const QuoteForm = ({ isOpen, onClose }) => {
 
   const modalRef = useRef(null);
 
-  // Handle form input changes
+  // Validation functions
+  const validateFullName = (name) => {
+    if (!name.trim()) return "Full name is required";
+    if (name.trim().length < 2)
+      return "Full name must be at least 2 characters";
+    const nameparts = name.trim().split(/\s+/);
+    if (nameparts.length < 2) return "Please enter first and last name";
+    return "";
+  };
+
+  const validateEmail = (email) => {
+    if (!email.trim()) return "Email is required";
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      return "Please enter a valid email address";
+    }
+    return "";
+  };
+
+  const validatePhone = (phone) => {
+    if (!phone.trim()) return "Phone number is required";
+
+    // Remove non-digit characters
+    const cleanedPhone = phone.replace(/\D/g, "");
+
+    // Check for 10 digit phone number
+    if (cleanedPhone.length !== 10) {
+      return "Please enter a valid 10-digit phone number";
+    }
+    return "";
+  };
+
+  // Comprehensive form validation
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Validate each field
+    const fullNameError = validateFullName(formData.fullName);
+    if (fullNameError) newErrors.fullName = fullNameError;
+
+    const emailError = validateEmail(formData.email);
+    if (emailError) newErrors.email = emailError;
+
+    const phoneError = validatePhone(formData.phone);
+    if (phoneError) newErrors.phone = phoneError;
+
+    return newErrors;
+  };
+
+  // Handle form input changes with real-time validation
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+
+    // Optional: Clear specific error when user starts typing
+    if (errors[name]) {
+      const { [name]: removedError, ...rest } = errors;
+      setErrors(rest);
+    }
   };
 
   // Handle explicit step navigation
@@ -38,7 +98,26 @@ const QuoteForm = ({ isOpen, onClose }) => {
     setCurrentStep(1);
   };
 
+  // Handle step navigation with validation
   const goToNextStep = () => {
+    const stepOneErrors = {};
+
+    const fullNameError = validateFullName(formData.fullName);
+    if (fullNameError) stepOneErrors.fullName = fullNameError;
+
+    const emailError = validateEmail(formData.email);
+    if (emailError) stepOneErrors.email = emailError;
+
+    const phoneError = validatePhone(formData.phone);
+    if (phoneError) stepOneErrors.phone = phoneError;
+
+    // If any errors, set them and prevent moving to next step
+    if (Object.keys(stepOneErrors).length > 0) {
+      setErrors(stepOneErrors);
+      return;
+    }
+
+    // Move to next step if no errors
     setCurrentStep(2);
   };
 
@@ -77,6 +156,15 @@ const QuoteForm = ({ isOpen, onClose }) => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate entire form before submission
+    const validationErrors = validateForm();
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
     setIsSubmitting(true);
     setError(null);
 
@@ -125,6 +213,7 @@ const QuoteForm = ({ isOpen, onClose }) => {
           message: "",
           timestamp: new Date().toISOString(),
         });
+        setErrors({});
       }, 3000);
     } catch (err) {
       setError(
@@ -256,9 +345,18 @@ const QuoteForm = ({ isOpen, onClose }) => {
                           name="fullName"
                           value={formData.fullName}
                           onChange={handleChange}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className={`w-full px-4 py-2 border ${
+                            errors.fullName
+                              ? "border-red-500 focus:ring-red-500"
+                              : "border-gray-300 focus:ring-blue-500"
+                          } rounded-md focus:outline-none focus:ring-2`}
                           required
                         />
+                        {errors.fullName && (
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.fullName}
+                          </p>
+                        )}
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
@@ -274,9 +372,18 @@ const QuoteForm = ({ isOpen, onClose }) => {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className={`w-full px-4 py-2 border ${
+                              errors.email
+                                ? "border-red-500 focus:ring-red-500"
+                                : "border-gray-300 focus:ring-blue-500"
+                            } rounded-md focus:outline-none focus:ring-2`}
                             required
                           />
+                          {errors.email && (
+                            <p className="text-red-500 text-sm mt-1">
+                              {errors.email}
+                            </p>
+                          )}
                         </div>
                         <div>
                           <label
@@ -291,9 +398,18 @@ const QuoteForm = ({ isOpen, onClose }) => {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className={`w-full px-4 py-2 border ${
+                              errors.phone
+                                ? "border-red-500 focus:ring-red-500"
+                                : "border-gray-300 focus:ring-blue-500"
+                            } rounded-md focus:outline-none focus:ring-2`}
                             required
                           />
+                          {errors.phone && (
+                            <p className="text-red-500 text-sm mt-1">
+                              {errors.phone}
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div>

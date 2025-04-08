@@ -4,9 +4,11 @@
 // Determine if we're in development or production environment
 const isDevelopment = window.location.hostname === "localhost";
 
-// API Gateway endpoint URL - replace with your new API endpoint
-export const API_ENDPOINT =
-  "https://nuf4p6d2sa.execute-api.us-east-1.amazonaws.com/Development";
+// API Gateway endpoint URL - dynamically set based on environment
+// In your config or environment file
+export const API_ENDPOINT = import.meta.env.PROD
+  ? "https://nuf4p6d2sa.execute-api.us-east-1.amazonaws.com/Development"
+  : "https://nuf4p6d2sa.execute-api.us-east-1.amazonaws.com/Development";
 
 // For local development, use simulation mode
 export const SIMULATE_API = false;
