@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ServicesHero from "../components/ServicesHero"; // Import the ServicesHero component
 import HeroMain from "../assets/HeroMain.png";
 
 const ServicesSection = () => {
@@ -141,29 +142,8 @@ const ServicesSection = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Hero Section - Matches Home.jsx styling */}
-      <section className="relative bg-gray-900 text-white py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 opacity-90"></div>
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col items-center justify-center space-y-8 text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Our Cleaning Services
-            </h1>
-            <p className="text-xl md:text-2xl max-w-3xl mx-auto text-gray-100">
-              Professional cleaning solutions tailored to your specific needs,
-              delivering spotless results every time.
-            </p>
-            <div className="mt-6">
-              <a
-                href="#contact"
-                className="inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-100 transition duration-300"
-              >
-                Get a Free Quote
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Add ServicesHero component at the top */}
+      <ServicesHero />
 
       {/* Service Tabs */}
       <section className="py-16 bg-white">
