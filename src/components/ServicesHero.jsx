@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import QuoteForm from "../components/QuoteForm";
-import ServiceHero1 from "../assets/ServiceHero1.jpg";
+import CarpetResidential from "../assets/CarpetResidential.jpg";
+import woodfloor from "../assets/woodfloor.jpg";
 
 const ServicesHero = () => {
   const [isQuoteFormOpen, setIsQuoteFormOpen] = useState(false);
@@ -27,12 +28,32 @@ const ServicesHero = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
           ></path>
         </svg>
       ),
-      title: "Residential",
-      description: "Keep your home spotless",
+      title: "Deep Carpet Cleaning",
+      description: "Removes stains, allergens & odors",
+    },
+    {
+      icon: (
+        <svg
+          className="w-10 h-10 text-blue-600"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+          ></path>
+        </svg>
+      ),
+      title: "Floor Buffing & Waxing",
+      description: "Restores shine & protects surfaces",
     },
     {
       icon: (
@@ -51,56 +72,133 @@ const ServicesHero = () => {
           ></path>
         </svg>
       ),
-      title: "Commercial",
-      description: "Professional business cleaning",
-    },
-    {
-      icon: (
-        <svg
-          className="w-10 h-10 text-blue-600"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-          ></path>
-        </svg>
-      ),
-      title: "Specialized",
+      title: "Residential & Commercial",
       description: "Customized cleaning solutions",
     },
   ];
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-r from-blue-100 to-indigo-100">
-      {/* Background pattern overlay */}
+    <div className="relative bg-blue-50">
+      {/* Background image overlay - similar height to home hero */}
       <div
-        className="absolute inset-0 z-0 opacity-20"
+        className="absolute inset-0 z-0"
         style={{
           backgroundImage: "url('/api/placeholder/1920/1080')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          opacity: "0.1",
         }}
       ></div>
 
       <div className="container mx-auto px-6 py-16 md:py-20 relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          {/* Left side content */}
-          <div className="md:w-1/2 md:pr-12 mb-10 md:mb-0">
+        <div className="flex flex-col md:flex-row items-center">
+          {/* Left side content - enhanced for SEO */}
+          <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-800 leading-tight mb-6">
-              Our Cleaning Services
+              Fairfield Counties Premier Carpet & Floor Care Specialists
             </h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-8">
-              Professional cleaning solutions tailored to your specific needs,
-              delivering spotless results every time.
+
+            <p className="text-lg md:text-xl text-gray-700 mb-4">
+              Camacho Cleaning delivers professional deep carpet cleaning and
+              floor buffing & waxing services that extend the life of your
+              flooring investments while creating a healthier environment.
             </p>
 
+            <p className="text-lg md:text-xl text-gray-700 mb-8">
+              Our advanced techniques and commercial-grade equipment remove
+              deep-seated dirt, stubborn stains, allergens, and odors from
+              carpets while our specialized floor care restores the beauty and
+              shine to hardwood, tile, and vinyl surfaces.
+            </p>
+
+            <div className="flex flex-wrap gap-4 mb-10">
+              <div className="flex items-center">
+                <div className="bg-blue-600 rounded-full p-2 mr-3">
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                </div>
+                <span className="text-gray-800">
+                  Advanced Extraction Methods
+                </span>
+              </div>
+
+              <div className="flex items-center">
+                <div className="bg-blue-600 rounded-full p-2 mr-3">
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                </div>
+                <span className="text-gray-800">
+                  Professional-Grade Equipment
+                </span>
+              </div>
+
+              <div className="flex items-center">
+                <div className="bg-blue-600 rounded-full p-2 mr-3">
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                </div>
+                <span className="text-gray-800">Eco-Friendly Solutions</span>
+              </div>
+
+              <div className="flex items-center">
+                <div className="bg-blue-600 rounded-full p-2 mr-3">
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                </div>
+                <span className="text-gray-800">Satisfaction Guaranteed</span>
+              </div>
+            </div>
+
+            {/* Free Quote Button - Styled consistently with homepage */}
             <button
               onClick={openQuoteForm}
               className="px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg shadow-lg transition duration-300 transform hover:scale-105 flex items-center"
@@ -123,30 +221,29 @@ const ServicesHero = () => {
             </button>
           </div>
 
-          {/* Right side - Image and service categories */}
-          <div className="md:w-1/2 relative">
-            <div className="relative rounded-lg shadow-2xl overflow-hidden mb-8">
+          {/* Right side - Image with proper height matching homepage */}
+          <div className="md:w-1/2">
+            <div className="relative rounded-lg shadow-2xl overflow-hidden h-auto">
               <img
-                src={ServiceHero1}
-                alt="Professional cleaning services"
-                className="w-full h-auto rounded-lg"
+                src={CarpetResidential}
+                alt="Professional carpet cleaning service in San Diego"
+                className="w-full rounded-lg"
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src =
-                    "https://via.placeholder.com/800x400?text=Our+Cleaning+Services";
+                    "https://via.placeholder.com/800x600?text=Professional+Carpet+Cleaning";
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent flex items-end">
-                <div className="p-6">
-                  <p className="text-white text-xl font-semibold">
-                    Tailored cleaning services for every space
-                  </p>
-                </div>
+              {/* Optional overlay to ensure text is visible */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                <p className="text-white text-xl font-semibold">
+                  Revitalize your carpets and floors with expert care
+                </p>
               </div>
             </div>
 
             {/* Service category boxes */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-4 mt-6">
               {serviceCategories.map((category, index) => (
                 <div
                   key={index}

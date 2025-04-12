@@ -1,141 +1,188 @@
 import React, { useState } from "react";
-import ServicesHero from "../components/ServicesHero"; // Import the ServicesHero component
+import ServicesHero from "../components/ServicesHero";
 import HeroMain from "../assets/HeroMain.png";
+import carpet from "../assets/carpet.png";
+import woodfloor from "../assets/woodfloor.jpg";
+import spraycarpet from "../assets/spraycarpet.jpg";
 
 const ServicesSection = () => {
-  const [activeTab, setActiveTab] = useState("residential");
+  const [activeTab, setActiveTab] = useState("carpet");
 
   const services = {
-    residential: [
+    carpet: [
       {
-        id: "regular-cleaning",
-        title: "Regular Cleaning",
+        id: "deep-carpet-cleaning",
+        title: "Deep Carpet Cleaning",
         description:
-          "Our regular cleaning service provides a thorough cleaning of your home on a recurring basis. Perfect for busy families who want to maintain a clean, healthy living environment.",
+          "Our professional deep carpet cleaning service removes embedded dirt, allergens, stains, and odors that regular vacuuming can't reach. We use advanced hot water extraction methods to restore your carpets to like-new condition.",
         features: [
-          "Dusting of all accessible surfaces",
-          "Vacuuming of carpets and floors",
-          "Cleaning of kitchen counters and appliances",
-          "Bathroom sanitization",
-          "Emptying trash bins",
+          "Removes deep-seated dirt and debris",
+          "Eliminates allergens and dust mites",
+          "Effectively treats stubborn stains",
+          "Neutralizes odors at the source",
+          "Extends the life of your carpets",
         ],
-        image: HeroMain,
+        image: carpet,
       },
       {
-        id: "deep-cleaning",
-        title: "Deep Cleaning",
+        id: "upholstery-cleaning",
+        title: "Upholstery Cleaning",
         description:
-          "Our deep cleaning service is a comprehensive cleaning that covers all areas of your home. Ideal for initial cleanings or for homes that haven't been professionally cleaned in a while.",
+          "Revitalize your furniture with our professional upholstery cleaning service. We use specialized equipment and cleaning solutions to safely remove dirt, stains, and odors from all types of upholstery fabrics.",
         features: [
-          "All regular cleaning services",
-          "Detailed cleaning of baseboards and door frames",
-          "Interior window cleaning",
-          "Cleaning inside kitchen appliances",
-          "Detailed scrubbing of bathroom tile and grout",
+          "Safe for all fabric types",
+          "Removes embedded dirt and dust",
+          "Eliminates allergens",
+          "Stain and spot treatment",
+          "Deodorizing treatment",
         ],
-        image: "/images/deep-cleaning.jpg",
+        image: spraycarpet,
+      },
+      {
+        id: "area-rug-cleaning",
+        title: "Area Rug Cleaning",
+        description:
+          "Our specialized area rug cleaning service provides gentle but thorough cleaning for all types of rugs, including delicate Oriental and Persian rugs. We remove dirt, stains, and odors while preserving the integrity of your valuable rugs.",
+        features: [
+          "Hand-cleaning for delicate rugs",
+          "Deep soil removal",
+          "Stain treatment",
+          "Fringe cleaning",
+          "Proper drying techniques",
+        ],
+        image: spraycarpet,
+      },
+    ],
+    floor: [
+      {
+        id: "floor-buffing",
+        title: "Floor Buffing & Polishing",
+        description:
+          "Restore the shine and luster to your hard floors with our professional buffing and polishing service. We use high-quality equipment and products to bring out the natural beauty of your floors and provide a protective shine.",
+        features: [
+          "Removes scuff marks and scratches",
+          "Restores shine and luster",
+          "Creates a protective layer",
+          "Works on multiple floor types",
+          "Extends floor lifespan",
+        ],
+        image: woodfloor,
+      },
+      {
+        id: "floor-waxing",
+        title: "Floor Waxing",
+        description:
+          "Protect and beautify your floors with our professional waxing service. We apply premium floor wax that creates a durable, protective layer to shield your floors from damage while enhancing their appearance with a brilliant shine.",
+        features: [
+          "Creates a protective barrier",
+          "Provides high-gloss finish",
+          "Prevents scratches and damage",
+          "Makes future cleaning easier",
+          "Prolongs floor life",
+        ],
+        image: woodfloor,
+      },
+      {
+        id: "hardwood-refinishing",
+        title: "Hardwood Floor Refinishing",
+        description:
+          "Breathe new life into your worn or damaged hardwood floors with our refinishing service. We carefully sand away imperfections, apply new stain if desired, and finish with a protective sealant for beautiful, long-lasting results.",
+        features: [
+          "Removes scratches and damage",
+          "Options for stain color changes",
+          "Satin, semi-gloss, or high-gloss finish",
+          "Extends floor lifespan by years",
+          "Increases property value",
+        ],
+        image: woodfloor,
+      },
+    ],
+    residential: [
+      {
+        id: "residential-carpet-cleaning",
+        title: "Residential Carpet Cleaning",
+        description:
+          "Keep your home's carpets fresh, clean, and healthy with our residential carpet cleaning service. We remove allergens, stains, and odors to create a healthier living environment for you and your family.",
+        features: [
+          "Whole house or individual room service",
+          "Pet stain and odor treatment",
+          "Fast drying times",
+          "Safe for children and pets",
+          "Scheduled maintenance programs available",
+        ],
+        image: carpet,
+      },
+      {
+        id: "residential-floor-care",
+        title: "Residential Floor Care",
+        description:
+          "Maintain the beauty and durability of your home's hard floors with our comprehensive floor care services. From tile to hardwood, we provide expert cleaning, buffing, and waxing to keep your floors looking their best.",
+        features: [
+          "Customized care for different floor types",
+          "Restoration of dull or worn floors",
+          "Protection from daily wear and tear",
+          "Enhancement of your home's appearance",
+          "Scheduled maintenance available",
+        ],
+        image: woodfloor,
       },
       {
         id: "move-in-out",
-        title: "Move In/Out Cleaning",
+        title: "Move In/Out Services",
         description:
-          "Whether you're moving into a new home or leaving your current one, our move in/out cleaning ensures your property is spotless from top to bottom.",
+          "Whether you're moving into a new home or leaving your current one, our move in/out cleaning ensures your floors and carpets are spotless. Perfect for rental properties to help ensure deposit returns.",
         features: [
-          "Comprehensive deep cleaning of entire home",
-          "Cleaning inside all cabinets and drawers",
-          "Detailed cleaning of all appliances",
-          "Scrubbing of baseboards and door frames",
-          "Window sill and track cleaning",
+          "Deep carpet cleaning and stain removal",
+          "Hard floor buffing and polishing",
+          "Complete floor restoration",
+          "Removal of previous tenant marks and stains",
+          "Property manager and landlord approved results",
         ],
-        image: "/images/move-in-out.jpg",
+        image: spraycarpet,
       },
     ],
     commercial: [
       {
-        id: "office-cleaning",
-        title: "Office Cleaning",
+        id: "commercial-carpet-care",
+        title: "Commercial Carpet Care",
         description:
-          "Keep your office environment clean and professional with our comprehensive office cleaning services tailored to meet your business needs.",
+          "Maintain a professional appearance and extend the life of your commercial carpets with our specialized commercial carpet cleaning service. We work around your business hours to minimize disruption.",
         features: [
-          "Reception and common area cleaning",
-          "Desk and cubicle dusting",
-          "Restroom sanitization",
-          "Break room cleaning",
-          "Trash removal and recycling",
+          "High-traffic area treatment",
+          "Stain protection application",
+          "After-hours service available",
+          "LEED-compliant cleaning methods",
+          "Scheduled maintenance programs",
         ],
-        image: "/images/office-cleaning.jpg",
+        image: carpet,
       },
       {
-        id: "retail-cleaning",
-        title: "Retail Cleaning",
+        id: "commercial-floor-maintenance",
+        title: "Commercial Floor Maintenance",
         description:
-          "Maintain a pristine shopping environment that attracts customers and enhances their shopping experience with our retail cleaning services.",
+          "Keep your business looking professional with our commercial floor maintenance services. We specialize in maintaining high-traffic commercial floors, from retail spaces to healthcare facilities.",
         features: [
-          "Floor cleaning and polishing",
-          "Window and glass cleaning",
-          "Fitting room maintenance",
-          "Product display dusting",
-          "Entryway and checkout area cleaning",
+          "Regular maintenance programs",
+          "High-traffic area focus",
+          "Slip-resistance treatment options",
+          "After-hours service available",
+          "Emergency service for spills or damage",
         ],
-        image: "/images/retail-cleaning.jpg",
+        image: woodfloor,
       },
       {
-        id: "medical-facility",
-        title: "Medical Facility Cleaning",
+        id: "industrial-floor-care",
+        title: "Industrial Floor Care",
         description:
-          "Our specialized medical facility cleaning follows strict protocols to ensure a sanitary environment for patients and staff.",
+          "Our industrial floor care services are designed for warehouses, manufacturing facilities, and other industrial spaces that require specialized floor maintenance despite heavy use and equipment.",
         features: [
-          "Hospital-grade disinfection",
-          "Waiting room and reception area cleaning",
-          "Exam room sanitization",
-          "Restroom deep cleaning",
-          "Proper disposal of medical waste",
+          "Heavy machinery area treatment",
+          "Oil and chemical stain removal",
+          "Anti-slip treatments",
+          "Concrete sealing and polishing",
+          "Schedule that works around production",
         ],
-        image: "/images/medical-cleaning.jpg",
-      },
-    ],
-    specialized: [
-      {
-        id: "carpet-cleaning",
-        title: "Carpet Cleaning",
-        description:
-          "Revitalize your carpets with our professional deep cleaning service that removes dirt, allergens, and stains.",
-        features: [
-          "Pre-treatment of heavily soiled areas",
-          "Hot water extraction cleaning",
-          "Spot and stain removal",
-          "Deodorizing treatment",
-          "Quick drying methods",
-        ],
-        image: "/images/carpet-cleaning.jpg",
-      },
-      {
-        id: "window-cleaning",
-        title: "Window Cleaning",
-        description:
-          "Enjoy crystal clear views with our professional window cleaning service for both interior and exterior windows.",
-        features: [
-          "Interior window cleaning",
-          "Exterior window cleaning",
-          "Window sill and track cleaning",
-          "Screen cleaning",
-          "Frame dusting and wiping",
-        ],
-        image: "/images/window-cleaning.jpg",
-      },
-      {
-        id: "post-construction",
-        title: "Post-Construction Cleaning",
-        description:
-          "After renovation or construction, our team will remove all debris and dust to make your space ready for use.",
-        features: [
-          "Construction debris removal",
-          "Dust removal from all surfaces",
-          "Detailed cleaning of all fixtures",
-          "Floor cleaning and polishing",
-          "Window and glass cleaning",
-        ],
-        image: "/images/post-construction.jpg",
+        image: woodfloor,
       },
     ],
   };
@@ -150,15 +197,36 @@ const ServicesSection = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              Choose Your Service Type
+              Our Specialized Services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We offer a wide range of professional cleaning services to meet
-              all your needs.
+              Camacho Cleaning specializes in professional deep carpet cleaning
+              and floor buffing & waxing services for both residential and
+              commercial clients.
             </p>
           </div>
 
           <div className="flex flex-wrap justify-center mb-12">
+            <button
+              onClick={() => setActiveTab("carpet")}
+              className={`px-6 py-3 text-lg font-medium mx-2 mb-2 rounded-lg ${
+                activeTab === "carpet"
+                  ? "bg-blue-600 text-white shadow-md"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              } transition duration-300`}
+            >
+              Carpet Cleaning
+            </button>
+            <button
+              onClick={() => setActiveTab("floor")}
+              className={`px-6 py-3 text-lg font-medium mx-2 mb-2 rounded-lg ${
+                activeTab === "floor"
+                  ? "bg-blue-600 text-white shadow-md"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              } transition duration-300`}
+            >
+              Floor Buffing & Waxing
+            </button>
             <button
               onClick={() => setActiveTab("residential")}
               className={`px-6 py-3 text-lg font-medium mx-2 mb-2 rounded-lg ${
@@ -179,16 +247,6 @@ const ServicesSection = () => {
             >
               Commercial
             </button>
-            <button
-              onClick={() => setActiveTab("specialized")}
-              className={`px-6 py-3 text-lg font-medium mx-2 mb-2 rounded-lg ${
-                activeTab === "specialized"
-                  ? "bg-blue-600 text-white shadow-md"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              } transition duration-300`}
-            >
-              Specialized
-            </button>
           </div>
 
           {/* Service Content */}
@@ -202,12 +260,18 @@ const ServicesSection = () => {
               >
                 <div className="md:w-1/2 mb-8 md:mb-0">
                   <div className="bg-gray-200 rounded-lg h-64 md:h-96 w-full overflow-hidden shadow-lg">
-                    {/* Placeholder for image */}
-                    <div className="h-full w-full flex items-center justify-center bg-gray-300">
-                      <span className="text-gray-600">
-                        Image: {service.title}
-                      </span>
-                    </div>
+                    {/* Display service image */}
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src =
+                          "https://via.placeholder.com/800x600?text=" +
+                          service.title;
+                      }}
+                    />
                   </div>
                 </div>
                 <div
@@ -246,7 +310,7 @@ const ServicesSection = () => {
                     href="#contact"
                     className="inline-block bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition duration-300"
                   >
-                    Book This Service
+                    Get a Free Quote
                   </a>
                 </div>
               </div>
@@ -260,11 +324,12 @@ const ServicesSection = () => {
         <div className="container mx-auto px-6">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready for a Cleaner Space?
+              Ready for Cleaner Carpets and Floors?
             </h2>
             <p className="text-xl mb-8 max-w-3xl mx-auto">
-              Contact Camacho Cleaning Services today for a free estimate and
-              discover the difference professional cleaning can make.
+              Contact Camacho Cleaning today for a free estimate and discover
+              how our specialized carpet and floor care services can transform
+              your space.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a
@@ -277,7 +342,7 @@ const ServicesSection = () => {
                 href="tel:6195551234"
                 className="bg-blue-800 text-white py-3 px-8 rounded-lg font-bold hover:bg-blue-900 transition duration-300"
               >
-                Call Us: (619) 555-1234
+                Call Us: (203) 536-0834
               </a>
             </div>
           </div>
@@ -293,7 +358,7 @@ const ServicesSection = () => {
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Read what our satisfied customers have to say about our
-              professional cleaning services.
+              professional carpet cleaning and floor care services.
             </p>
           </div>
 
@@ -316,9 +381,10 @@ const ServicesSection = () => {
                 </div>
               </div>
               <p className="text-gray-600 italic mb-6">
-                "Camacho Cleaning Services has been cleaning my home for over a
-                year now, and I couldn't be happier with their work. My house
-                has never been cleaner!"
+                "I was amazed at how Camacho Cleaning was able to restore my
+                carpets to like-new condition. They removed stains I thought
+                would be there forever. Their deep cleaning process is truly
+                exceptional!"
               </p>
               <div className="font-medium text-gray-800">- Maria Johnson</div>
               <div className="text-gray-500 text-sm">Residential Client</div>
@@ -342,9 +408,9 @@ const ServicesSection = () => {
                 </div>
               </div>
               <p className="text-gray-600 italic mb-6">
-                "As a business owner, I needed a reliable cleaning service for
-                my office. Camacho Cleaning exceeded my expectations with their
-                professionalism and attention to detail."
+                "Our office floors have never looked better since we started
+                using Camacho Cleaning for our monthly floor buffing and waxing.
+                Clients consistently comment on how impressive our space looks!"
               </p>
               <div className="font-medium text-gray-800">- Robert Smith</div>
               <div className="text-gray-500 text-sm">Commercial Client</div>
@@ -368,13 +434,14 @@ const ServicesSection = () => {
                 </div>
               </div>
               <p className="text-gray-600 italic mb-6">
-                "I hired Camacho Cleaning for a deep clean before hosting a
-                family event. They transformed my home in just a few hours! I'm
-                now a regular customer."
+                "I have a vintage oriental rug that was looking dull and had
+                some tough stains. Camacho Cleaning's specialized carpet
+                cleaning brought it back to life without damaging the delicate
+                fibers. Truly impressive work!"
               </p>
               <div className="font-medium text-gray-800">- Jennifer Davis</div>
               <div className="text-gray-500 text-sm">
-                Specialized Cleaning Client
+                Specialty Carpet Client
               </div>
             </div>
           </div>
@@ -398,54 +465,64 @@ const ServicesSection = () => {
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Get answers to common questions about our cleaning services.
+              Get answers to common questions about our carpet cleaning and
+              floor care services.
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto space-y-6">
             <div className="bg-white rounded-lg shadow-md p-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                How often should I schedule cleaning services?
+                How often should carpets be professionally cleaned?
               </h3>
               <p className="text-gray-600">
-                The frequency depends on your specific needs. Many residential
-                clients prefer weekly or bi-weekly service, while businesses
-                might require daily cleaning. We can help you determine the
-                optimal schedule during your consultation.
+                Most carpet manufacturers recommend professional deep cleaning
+                every 12-18 months for residential carpets. However, homes with
+                pets, children, or high traffic may benefit from cleaning every
+                6-9 months. Commercial carpets in high-traffic areas often
+                require quarterly cleaning to maintain appearance and extend
+                lifespan.
               </p>
             </div>
 
             <div className="bg-white rounded-lg shadow-md p-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                Do I need to provide cleaning supplies?
+                How long does it take for carpets to dry after cleaning?
               </h3>
               <p className="text-gray-600">
-                No, Camacho Cleaning Services brings all necessary cleaning
-                supplies and equipment. We use eco-friendly products that are
-                safe for your family, pets, and the environment.
+                With our advanced equipment and techniques, most carpets dry
+                within 4-6 hours. Factors that affect drying time include
+                humidity, air circulation, and carpet thickness. We use powerful
+                extraction methods that remove most moisture, significantly
+                reducing drying time compared to standard cleaning methods.
               </p>
             </div>
 
             <div className="bg-white rounded-lg shadow-md p-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                Is your staff bonded and insured?
+                How often should floors be buffed and waxed?
               </h3>
               <p className="text-gray-600">
-                Yes, all our cleaning professionals are thoroughly
-                background-checked, bonded, and insured. We prioritize your
-                security and peace of mind.
+                For commercial spaces, floor buffing is typically recommended
+                monthly, with complete stripping and waxing 2-4 times per year
+                depending on traffic. Residential floors generally need buffing
+                every 3-6 months and waxing annually. High-traffic areas may
+                require more frequent maintenance to maintain appearance and
+                protection.
               </p>
             </div>
 
             <div className="bg-white rounded-lg shadow-md p-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                What if I'm not satisfied with the cleaning?
+                Are your cleaning products safe for children and pets?
               </h3>
               <p className="text-gray-600">
-                Customer satisfaction is our top priority. If you're not
-                completely satisfied with any aspect of our service, please let
-                us know within 24 hours, and we'll return to address any areas
-                of concern at no additional cost.
+                Yes, we use environmentally responsible cleaning products that
+                are safe for your family, pets, and the environment. Our
+                cleaning solutions effectively remove dirt, stains, and
+                allergens without harsh chemicals. We also offer completely
+                green cleaning options upon request for those with sensitivities
+                or environmental concerns.
               </p>
             </div>
           </div>
@@ -460,8 +537,9 @@ const ServicesSection = () => {
               Why Choose Camacho Cleaning
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We're committed to providing the highest quality cleaning services
-              with attention to detail and customer satisfaction.
+              We're committed to providing the highest quality carpet cleaning
+              and floor care services with attention to detail and customer
+              satisfaction.
             </p>
           </div>
 
@@ -484,11 +562,11 @@ const ServicesSection = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-3">
-                Trusted Professionals
+                Specialized Expertise
               </h3>
               <p className="text-gray-600">
-                Our team consists of trained, background-checked, and insured
-                cleaning specialists.
+                We focus exclusively on carpet cleaning and floor care, allowing
+                us to perfect our techniques and deliver superior results.
               </p>
             </div>
 
@@ -513,8 +591,8 @@ const ServicesSection = () => {
                 Satisfaction Guaranteed
               </h3>
               <p className="text-gray-600">
-                If you're not completely satisfied, we'll return to re-clean at
-                no additional cost.
+                If you're not completely satisfied with our work, we'll return
+                to address any areas of concern at no additional cost.
               </p>
             </div>
 
@@ -536,11 +614,12 @@ const ServicesSection = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-3">
-                Eco-Friendly Products
+                Advanced Equipment
               </h3>
               <p className="text-gray-600">
-                We use environmentally responsible cleaning products that are
-                safe for your family and pets.
+                We invest in state-of-the-art equipment that delivers deeper
+                cleaning, faster drying, and better results than standard
+                methods.
               </p>
             </div>
 
@@ -562,11 +641,12 @@ const ServicesSection = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-3">
-                Consistent & Reliable
+                Tailored Solutions
               </h3>
               <p className="text-gray-600">
-                We arrive on time and deliver consistent, high-quality cleaning
-                on every visit.
+                We customize our approach for each job, considering the specific
+                type of carpet or floor, level of soiling, and your unique needs
+                and concerns.
               </p>
             </div>
           </div>
@@ -582,14 +662,14 @@ const ServicesSection = () => {
             </h2>
             <p className="text-xl mb-8 max-w-3xl mx-auto">
               Join our satisfied customers and discover why Camacho Cleaning is
-              the preferred choice for residential and commercial cleaning
-              services.
+              the preferred choice for carpet cleaning and floor care services
+              in San Diego.
             </p>
             <a
               href="/contact"
               className="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-lg shadow-md transition duration-300"
             >
-              Schedule Your Cleaning Today
+              Schedule Your Service Today
             </a>
           </div>
         </div>
