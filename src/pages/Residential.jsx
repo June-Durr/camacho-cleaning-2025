@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import image1 from "../assets/image1.jpg"; // Replace with your image path
 
 const Residential = () => {
   return (
@@ -92,7 +93,7 @@ const Residential = () => {
             </div>
             <div className="md:w-1/2">
               <img
-                src="/api/placeholder/600/400"
+                src={image1}
                 alt="Residential Cleaning"
                 className="rounded-lg shadow-lg"
               />

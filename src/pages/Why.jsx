@@ -1,12 +1,13 @@
 import React from "react";
+import WhyHero from "../components/WhyHero";
 
 const Why = () => {
-  const reasons = [
+  const coreValues = [
     {
-      id: "detail-clean",
-      title: "Detail-Clean Rotation System",
+      id: "excellence",
+      title: "Commitment to Excellence",
       description:
-        "Our proprietary Detail-Clean Rotation System ensures your home receives meticulous attention during every visit. We rotate our focus areas to maintain a consistently high standard of cleanliness throughout your home.",
+        "With over 25 years serving Fairfield County, we've refined our craft to deliver exceptional results on every visit. Our experience has taught us that true excellence is in the details.",
       icon: (
         <svg
           className="w-12 h-12 text-blue-600"
@@ -19,132 +20,19 @@ const Why = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
           ></path>
         </svg>
       ),
     },
     {
-      id: "environmentally-responsible",
-      title: "Environmentally Responsible",
+      id: "trust",
+      title: "Built on Trust",
       description:
-        "Were committed to using environmentally friendly cleaning products that are safe for your family, pets, and the planet. Our green cleaning solutions effectively remove dirt and germs without harsh chemicals.",
+        "Our clients trust us in their homes and businesses because of our integrity and reliability. Every team member is thoroughly vetted, background-checked, bonded, and insured for your complete peace of mind.",
       icon: (
         <svg
           className="w-12 h-12 text-blue-600"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-          ></path>
-        </svg>
-      ),
-    },
-    {
-      id: "trained-professionals",
-      title: "Professionally Trained Staff",
-      description:
-        "Our cleaning technicians undergo extensive training in our proven cleaning methods. Each team member is background-checked, bonded, and insured for your peace of mind.",
-      icon: (
-        <svg
-          className="w-12 h-12 text-blue-600"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-          ></path>
-        </svg>
-      ),
-    },
-    {
-      id: "quality-guarantee",
-      title: "100% Satisfaction Guarantee",
-      description:
-        "Your satisfaction is our priority. If youre not completely satisfied with any area weve cleaned, call within 24 hours and well return to re-clean it free of charge.",
-      icon: (
-        <svg
-          className="w-12 h-12 text-blue-600"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M5 13l4 4L19 7"
-          ></path>
-        </svg>
-      ),
-    },
-  ];
-
-  const benefits = [
-    {
-      id: "more-time",
-      title: "More Time For What Matters",
-      description:
-        "Reclaim your precious time and focus on what truly matters to you while we handle the cleaning.",
-      icon: (
-        <svg
-          className="w-10 h-10 text-blue-600"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-          ></path>
-        </svg>
-      ),
-    },
-    {
-      id: "healthier-home",
-      title: "A Healthier Home",
-      description:
-        "Our thorough cleaning reduces allergens, bacteria, and germs, creating a healthier living environment.",
-      icon: (
-        <svg
-          className="w-10 h-10 text-blue-600"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-          ></path>
-        </svg>
-      ),
-    },
-    {
-      id: "consistent-quality",
-      title: "Consistent, Reliable Quality",
-      description:
-        "Our systematic approach ensures dependable, high-quality cleaning results every time we visit.",
-      icon: (
-        <svg
-          className="w-10 h-10 text-blue-600"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -160,13 +48,13 @@ const Why = () => {
       ),
     },
     {
-      id: "peace-of-mind",
-      title: "Peace of Mind",
+      id: "eco-friendly",
+      title: "Environmentally Responsible",
       description:
-        "Rest easy knowing trustworthy, trained professionals are caring for your home.",
+        "We're committed to using environmentally friendly cleaning products that effectively clean and sanitize without harsh chemicals. Our green cleaning approach protects your family, pets, and our planet.",
       icon: (
         <svg
-          className="w-10 h-10 text-blue-600"
+          className="w-12 h-12 text-blue-600"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -176,918 +64,361 @@ const Why = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 15a3 3 0 100-6 3 3 0 000 6z"
+            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
+          ></path>
+        </svg>
+      ),
+    },
+    {
+      id: "customer-focus",
+      title: "Customer-Focused Approach",
+      description:
+        "We build relationships, not just client lists. Your satisfaction is our highest priority, backed by our 100% satisfaction guarantee. If you're not completely happy, we'll return to address any concerns at no additional cost.",
+      icon: (
+        <svg
+          className="w-12 h-12 text-blue-600"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
           ></path>
         </svg>
       ),
     },
   ];
 
-  const stats = [
+  const achievements = [
     {
       value: "25+",
-      label: "Years Experience",
+      label: "Years of Experience",
     },
     {
       value: "10,000+",
-      label: "Happy Customers",
+      label: "Satisfied Clients",
     },
     {
       value: "99%",
-      label: "Customer Satisfaction",
+      label: "Customer Retention",
     },
     {
       value: "100%",
-      label: "Guaranteed",
+      label: "Satisfaction Guarantee",
+    },
+  ];
+
+  const differentiators = [
+    {
+      title: "Proprietary Cleaning System",
+      description:
+        "Our Detail-Clean Rotation System ensures comprehensive cleaning with special attention to different areas during each visit.",
+    },
+    {
+      title: "Employee Excellence",
+      description:
+        "Unlike companies that use contractors, our staff are full employees, thoroughly trained in our methods and committed to our standards.",
+    },
+    {
+      title: "Customized Cleaning Plans",
+      description:
+        "We build personalized cleaning plans based on your specific needs, preferences, and schedule.",
+    },
+    {
+      title: "Technology Integration",
+      description:
+        "We use modern scheduling and communication tools to make working with us seamless and convenient.",
+    },
+    {
+      title: "Quality Assurance",
+      description:
+        "Regular quality checks and feedback systems ensure we consistently deliver exceptional results.",
+    },
+    {
+      title: "Community Commitment",
+      description:
+        "As a local Fairfield County business, we're invested in our community, understanding the specific needs of homes and businesses in our area.",
     },
   ];
 
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <div className="bg-blue-600 py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
-            Why Choose Camacho Cleaning
-          </h1>
-          <p className="text-xl text-white text-center mt-4 max-w-3xl mx-auto">
-            We deliver exceptional cleaning services with attention to detail,
-            trained professionals, and environmentally friendly practices.
-          </p>
+      <WhyHero />
+
+      {/* Our Story Section */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2 md:pr-12 mb-8 md:mb-0">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">Our Story</h2>
+            <div className="prose prose-lg max-w-none text-gray-600">
+              <p>
+                Camacho Cleaning was founded in 1997 with a simple mission: to
+                provide Fairfield County with cleaning services that truly make
+                a difference in people's lives. What began as a small family
+                business has grown into one of the region's most trusted
+                cleaning companies.
+              </p>
+              <p>
+                For over 25 years, we've balanced growth with our commitment to
+                personalized service. While we've expanded our team and
+                capabilities, we've never lost sight of what matters most – the
+                relationships we build with our clients and the quality of our
+                work.
+              </p>
+              <p>
+                Today, we continue to be a family-owned and operated business
+                that treats our clients like part of the Camacho family. Our
+                experienced staff brings professionalism, care, and attention to
+                detail to every job, whether it's a cozy home or a large
+                commercial facility.
+              </p>
+            </div>
+          </div>
+          <div className="md:w-1/2">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="aspect-square overflow-hidden rounded-lg shadow-md">
+                <img
+                  src="/api/placeholder/300/300"
+                  alt="Camacho Cleaning founders"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://via.placeholder.com/300x300?text=Our+Founders";
+                  }}
+                />
+              </div>
+              <div className="aspect-square overflow-hidden rounded-lg shadow-md mt-8">
+                <img
+                  src="/api/placeholder/300/300"
+                  alt="Camacho Cleaning team"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://via.placeholder.com/300x300?text=Our+Team";
+                  }}
+                />
+              </div>
+              <div className="aspect-square overflow-hidden rounded-lg shadow-md">
+                <img
+                  src="/api/placeholder/300/300"
+                  alt="Cleaning equipment"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://via.placeholder.com/300x300?text=Equipment";
+                  }}
+                />
+              </div>
+              <div className="aspect-square overflow-hidden rounded-lg shadow-md mt-8">
+                <img
+                  src="/api/placeholder/300/300"
+                  alt="Cleaning service"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://via.placeholder.com/300x300?text=In+Action";
+                  }}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Our Difference */}
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-          The Camacho Cleaning Difference
-        </h2>
+      {/* Our Core Values */}
+      <div className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+            Our Core Values
+          </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {reasons.map((reason, index) => (
-            <div key={reason.id} className="flex">
-              <div className="flex-shrink-0 mr-6">
-                <div className="bg-blue-100 rounded-full p-4 flex items-center justify-center">
-                  {reason.icon}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {coreValues.map((value) => (
+              <div
+                key={value.id}
+                className="flex bg-white p-6 rounded-lg shadow-md"
+              >
+                <div className="flex-shrink-0 mr-6">
+                  <div className="bg-blue-100 rounded-full p-4 flex items-center justify-center">
+                    {value.icon}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-blue-600 mb-3">
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-600">{value.description}</p>
                 </div>
               </div>
-              <div>
-                <h3 className="text-2xl font-semibold text-blue-600 mb-3">
-                  {reason.title}
-                </h3>
-                <p className="text-gray-600">{reason.description}</p>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Achievements */}
+      <div className="bg-blue-600 text-white py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-16">
+            25 Years of Excellence in Fairfield County
+          </h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {achievements.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-4xl md:text-5xl font-bold mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-blue-100 font-medium">{stat.label}</div>
               </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* What Sets Us Apart */}
+      <div className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+          What Sets Camacho Cleaning Apart
+        </h2>
+        <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+          After 25 years in business, we understand what makes a cleaning
+          service truly exceptional. Here's why so many Fairfield County
+          residents and businesses choose Camacho Cleaning:
+        </p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {differentiators.map((item, index) => (
+            <div
+              key={index}
+              className="bg-gray-50 p-6 rounded-lg border-t-4 border-blue-500 shadow-md"
+            >
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                {item.title}
+              </h3>
+              <p className="text-gray-600">{item.description}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Stats */}
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Our Process */}
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-          Our Cleaning Process
-        </h2>
-
-        <div className="flex flex-col md:flex-row items-center justify-center">
-          <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-            <div className="bg-gray-200 rounded-lg h-96 w-full overflow-hidden">
-              {/* Placeholder for process image */}
-              <div className="h-full w-full flex items-center justify-center bg-gray-300">
-                <span className="text-gray-600">Cleaning Process Image</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="md:w-1/2 md:pl-8">
-            <div className="space-y-6">
-              <div className="flex">
-                <div className="flex-shrink-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">
-                  1
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    Initial Assessment
-                  </h3>
-                  <p className="text-gray-600">
-                    We begin with a thorough assessment of your space to
-                    understand your specific needs and concerns.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex">
-                <div className="flex-shrink-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">
-                  2
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    First Deep Clean
-                  </h3>
-                  <p className="text-gray-600">
-                    Your first service includes a comprehensive deep cleaning to
-                    establish a baseline of cleanliness.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex">
-                <div className="flex-shrink-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">
-                  3
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    Detail-Clean Rotation
-                  </h3>
-                  <p className="text-gray-600">
-                    We implement our rotation system to ensure all areas receive
-                    detailed attention on a regular basis.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex">
-                <div className="flex-shrink-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">
-                  4
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    Quality Assurance
-                  </h3>
-                  <p className="text-gray-600">
-                    Every cleaning concludes with a quality check to ensure our
-                    high standards are consistently met.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Benefits */}
-      <div className="bg-gray-50 py-16">
+      {/* Testimonials Section */}
+      <div className="bg-blue-50 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-            Benefits of Professional Cleaning
+            What Our Clients Say
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {benefits.map((benefit) => (
-              <div key={benefit.id} className="text-center">
-                <div className="bg-white rounded-lg p-8 shadow-md h-full">
-                  <div className="bg-blue-100 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                    {benefit.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Testimonial 1 */}
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="text-yellow-400 flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg
+                      key={i}
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Testimonial Feature */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="bg-blue-600 rounded-lg p-8 md:p-12">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/4 mb-6 md:mb-0">
-              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto">
-                <svg
-                  className="w-12 h-12 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-            <div className="md:w-3/4 text-center md:text-left">
-              <p className="text-xl md:text-2xl font-medium text-white italic mb-4">
-                "Camacho Cleaning has transformed our home. Their attention to
-                detail is remarkable, and the team is always professional and
-                friendly. It's a relief to come home to a spotless house every
-                week!"
+              <p className="text-gray-600 italic mb-4">
+                "We've been using Camacho Cleaning for over 10 years now. Their
+                team is always professional, thorough, and trustworthy. I never
+                worry about the quality of their work - it's consistently
+                excellent."
               </p>
-              <p className="text-white font-semibold">
-                - Sarah Johnson, Homeowner
+              <p className="font-semibold text-gray-800">
+                - Margaret R., Westport
+              </p>
+              <p className="text-gray-500 text-sm">
+                Residential Client Since 2012
               </p>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Trust Badges */}
-      <div className="bg-white py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-            Trusted & Certified
-          </h2>
-
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            <div className="text-center">
-              <div className="bg-gray-100 rounded-full p-4 w-24 h-24 flex items-center justify-center mx-auto">
-                <svg
-                  className="w-12 h-12 text-gray-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  ></path>
-                </svg>
+            {/* Testimonial 2 */}
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="text-yellow-400 flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg
+                      key={i}
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
               </div>
-              <p className="font-medium text-gray-700 mt-3">Fully Insured</p>
+              <p className="text-gray-600 italic mb-4">
+                "As a medical facility, we require exceptional cleanliness and
+                disinfection. Camacho Cleaning consistently delivers the highest
+                standards, giving our staff and patients peace of mind."
+              </p>
+              <p className="font-semibold text-gray-800">- Dr. James Wilson</p>
+              <p className="text-gray-500 text-sm">Fairfield Medical Center</p>
             </div>
 
-            <div className="text-center">
-              <div className="bg-gray-100 rounded-full p-4 w-24 h-24 flex items-center justify-center mx-auto">
-                <svg
-                  className="w-12 h-12 text-gray-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  ></path>
-                </svg>
+            {/* Testimonial 3 */}
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="text-yellow-400 flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg
+                      key={i}
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
               </div>
-              <p className="font-medium text-gray-700 mt-3">Certified</p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-gray-100 rounded-full p-4 w-24 h-24 flex items-center justify-center mx-auto">
-                <svg
-                  className="w-12 h-12 text-gray-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  ></path>
-                </svg>
-              </div>
-              <p className="font-medium text-gray-700 mt-3">Bonded Staff</p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-gray-100 rounded-full p-4 w-24 h-24 flex items-center justify-center mx-auto">
-                <svg
-                  className="w-12 h-12 text-gray-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                  ></path>
-                </svg>
-              </div>
-              <p className="font-medium text-gray-700 mt-3">Customizable</p>
+              <p className="text-gray-600 italic mb-4">
+                "What impresses me most about Camacho Cleaning is their
+                consistency and attention to detail. They don't just clean the
+                obvious areas - they find and address things I wouldn't even
+                notice."
+              </p>
+              <p className="font-semibold text-gray-800">- Sarah Thompson</p>
+              <p className="text-gray-500 text-sm">Stamford Resident</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Compare Services */}
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">
-            Compare Our Services
+      {/* Final CTA */}
+      <div className="bg-blue-600 py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-white mb-6">
+            Experience the Camacho Cleaning Difference
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
-            See how Camacho Cleaning's professional services compare to DIY
-            cleaning or hiring an independent cleaner.
+          <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
+            Join our family of satisfied clients across Fairfield County and
+            discover why we've been the trusted choice for over 25 years.
           </p>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white shadow-lg rounded-lg overflow-hidden">
-              <thead>
-                <tr className="bg-blue-600 text-white">
-                  <th className="py-4 px-6 text-left">Features</th>
-                  <th className="py-4 px-6 text-center">Camacho Cleaning</th>
-                  <th className="py-4 px-6 text-center">DIY Cleaning</th>
-                  <th className="py-4 px-6 text-center">Independent Cleaner</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b">
-                  <td className="py-4 px-6 font-medium">
-                    Professional Training
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-red-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-yellow-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 px-6 font-medium">Insured & Bonded</td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-red-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-yellow-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 px-6 font-medium">Background Checked</td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-red-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-yellow-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 px-6 font-medium">Consistent Quality</td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-yellow-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-yellow-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 px-6 font-medium">
-                    Professional Equipment
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-red-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-yellow-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 px-6 font-medium">
-                    Eco-Friendly Products
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-yellow-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-yellow-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 px-6 font-medium">
-                    Satisfaction Guarantee
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-red-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-red-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 px-6 font-medium">
-                    Liability Protection
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-red-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-yellow-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 px-6 font-medium">Flexible Scheduling</td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-yellow-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 px-6 font-medium">Time Savings</td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-red-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                  <td className="py-4 px-6 text-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mx-auto"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div className="mt-12 max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">
-              Why Choose Camacho Cleaning?
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <svg
-                  className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-                <span>
-                  <strong>Thoroughly trained professionals</strong> who undergo
-                  extensive training and background checks
-                </span>
-              </li>
-              <li className="flex items-start">
-                <svg
-                  className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-                <span>
-                  <strong>Fully insured and bonded</strong> for your complete
-                  peace of mind
-                </span>
-              </li>
-              <li className="flex items-start">
-                <svg
-                  className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-                <span>
-                  <strong>Professional-grade equipment and supplies</strong> for
-                  a deeper, more thorough clean
-                </span>
-              </li>
-              <li className="flex items-start">
-                <svg
-                  className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-                <span>
-                  <strong>Eco-friendly cleaning products</strong> that are safer
-                  for your family, pets, and the environment
-                </span>
-              </li>
-              <li className="flex items-start">
-                <svg
-                  className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-                <span>
-                  <strong>100% satisfaction guarantee</strong> - we're not happy
-                  until you're happy
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="mt-10 text-center">
-            <a
-              href="/contact"
-              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300"
-            >
-              Get Your Free Estimate Today
-            </a>
-          </div>
+          <button className="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-md text-lg transition-colors duration-300">
+            Schedule Your Cleaning Today
+          </button>
         </div>
       </div>
     </div>
   );
 };
+
 export default Why;

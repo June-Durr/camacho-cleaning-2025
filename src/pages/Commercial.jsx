@@ -1,4 +1,5 @@
 import React from "react";
+import buff from "../assets/buff.jpg";
 
 const CommercialPage = () => {
   return (
@@ -101,7 +102,7 @@ const CommercialPage = () => {
             </div>
             <div className="md:w-1/2">
               <img
-                src="/images/commercial-cleaning.jpg"
+                src={buff}
                 alt="Commercial Cleaning Services"
                 className="rounded-lg shadow-xl"
                 onError={(e) => {

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import ServicesHero from "../components/ServicesHero";
+import CarpetResidential from "../assets/CarpetResidential.jpg";
 
 const ServicesSection = () => {
   const [activeTab, setActiveTab] = useState("residential");
@@ -17,7 +19,7 @@ const ServicesSection = () => {
           "Bathroom sanitization",
           "Emptying trash bins",
         ],
-        image: "/images/regular-cleaning.jpg",
+        image: CarpetResidential,
       },
       {
         id: "deep-cleaning",
@@ -141,18 +143,8 @@ const ServicesSection = () => {
   return (
     <>
       <div className="bg-white">
-        {/* Hero Section */}
-        <div className="bg-blue-600 py-20">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
-              Our Cleaning Services
-            </h1>
-            <p className="text-xl text-white text-center mt-4 max-w-3xl mx-auto">
-              Professional cleaning solutions tailored to your specific needs,
-              delivering spotless results every time.
-            </p>
-          </div>
-        </div>
+        {/* Replace the old hero section with our new ServicesHero component */}
+        <ServicesHero />
 
         {/* Service Tabs */}
         <div className="container mx-auto px-4 py-8">
