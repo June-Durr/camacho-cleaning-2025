@@ -1,5 +1,9 @@
 import React from "react";
 import WhyHero from "../components/WhyHero";
+import woodfloor from "../assets/woodfloor.jpg";
+import spray from "../assets/spray.jpg";
+import spraycarpet from "../assets/spraycarpet.jpg";
+import sponge from "../assets/sponge.png";
 
 const Why = () => {
   const coreValues = [
@@ -183,7 +187,7 @@ const Why = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="aspect-square overflow-hidden rounded-lg shadow-md">
                 <img
-                  src="/api/placeholder/300/300"
+                  src={spray}
                   alt="Camacho Cleaning founders"
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -195,7 +199,7 @@ const Why = () => {
               </div>
               <div className="aspect-square overflow-hidden rounded-lg shadow-md mt-8">
                 <img
-                  src="/api/placeholder/300/300"
+                  src={sponge}
                   alt="Camacho Cleaning team"
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -207,7 +211,7 @@ const Why = () => {
               </div>
               <div className="aspect-square overflow-hidden rounded-lg shadow-md">
                 <img
-                  src="/api/placeholder/300/300"
+                  src={woodfloor}
                   alt="Cleaning equipment"
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -219,7 +223,7 @@ const Why = () => {
               </div>
               <div className="aspect-square overflow-hidden rounded-lg shadow-md mt-8">
                 <img
-                  src="/api/placeholder/300/300"
+                  src={spraycarpet}
                   alt="Cleaning service"
                   className="w-full h-full object-cover"
                   onError={(e) => {

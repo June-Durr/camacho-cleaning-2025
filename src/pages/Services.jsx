@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import ServicesHero from "../components/ServicesHero";
-import CarpetResidential from "../assets/CarpetResidential.jpg";
+import HeroMain from "../assets/HeroMain.png";
 
 const ServicesSection = () => {
   const [activeTab, setActiveTab] = useState("residential");
@@ -19,7 +18,7 @@ const ServicesSection = () => {
           "Bathroom sanitization",
           "Emptying trash bins",
         ],
-        image: CarpetResidential,
+        image: HeroMain,
       },
       {
         id: "deep-cleaning",
@@ -141,57 +140,88 @@ const ServicesSection = () => {
   };
 
   return (
-    <>
-      <div className="bg-white">
-        {/* Replace the old hero section with our new ServicesHero component */}
-        <ServicesHero />
+    <div className="min-h-screen flex flex-col">
+      {/* Hero Section - Matches Home.jsx styling */}
+      <section className="relative bg-gray-900 text-white py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 opacity-90"></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="flex flex-col items-center justify-center space-y-8 text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              Our Cleaning Services
+            </h1>
+            <p className="text-xl md:text-2xl max-w-3xl mx-auto text-gray-100">
+              Professional cleaning solutions tailored to your specific needs,
+              delivering spotless results every time.
+            </p>
+            <div className="mt-6">
+              <a
+                href="#contact"
+                className="inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-100 transition duration-300"
+              >
+                Get a Free Quote
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        {/* Service Tabs */}
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex flex-wrap justify-center mb-8">
+      {/* Service Tabs */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Choose Your Service Type
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              We offer a wide range of professional cleaning services to meet
+              all your needs.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center mb-12">
             <button
               onClick={() => setActiveTab("residential")}
-              className={`px-6 py-3 text-lg font-medium mx-2 mb-2 rounded-md ${
+              className={`px-6 py-3 text-lg font-medium mx-2 mb-2 rounded-lg ${
                 activeTab === "residential"
-                  ? "bg-blue-600 text-white"
+                  ? "bg-blue-600 text-white shadow-md"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
+              } transition duration-300`}
             >
               Residential
             </button>
             <button
               onClick={() => setActiveTab("commercial")}
-              className={`px-6 py-3 text-lg font-medium mx-2 mb-2 rounded-md ${
+              className={`px-6 py-3 text-lg font-medium mx-2 mb-2 rounded-lg ${
                 activeTab === "commercial"
-                  ? "bg-blue-600 text-white"
+                  ? "bg-blue-600 text-white shadow-md"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
+              } transition duration-300`}
             >
               Commercial
             </button>
             <button
               onClick={() => setActiveTab("specialized")}
-              className={`px-6 py-3 text-lg font-medium mx-2 mb-2 rounded-md ${
+              className={`px-6 py-3 text-lg font-medium mx-2 mb-2 rounded-lg ${
                 activeTab === "specialized"
-                  ? "bg-blue-600 text-white"
+                  ? "bg-blue-600 text-white shadow-md"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
+              } transition duration-300`}
             >
               Specialized
             </button>
           </div>
 
           {/* Service Content */}
-          <div className="py-8">
+          <div>
             {services[activeTab].map((service, index) => (
               <div
                 key={service.id}
-                className={`flex flex-col md:flex-row items-center mb-16 ${
+                className={`flex flex-col md:flex-row items-center mb-20 ${
                   index % 2 === 1 ? "md:flex-row-reverse" : ""
                 }`}
               >
                 <div className="md:w-1/2 mb-8 md:mb-0">
-                  <div className="bg-gray-200 rounded-lg h-64 md:h-96 w-full overflow-hidden">
+                  <div className="bg-gray-200 rounded-lg h-64 md:h-96 w-full overflow-hidden shadow-lg">
                     {/* Placeholder for image */}
                     <div className="h-full w-full flex items-center justify-center bg-gray-300">
                       <span className="text-gray-600">
@@ -201,22 +231,24 @@ const ServicesSection = () => {
                   </div>
                 </div>
                 <div
-                  className={`md:w-1/2 md:px-8 ${
-                    index % 2 === 1 ? "md:pr-0 md:pl-8" : "md:pl-0 md:pr-8"
+                  className={`md:w-1/2 ${
+                    index % 2 === 1 ? "md:pr-12" : "md:pl-12"
                   }`}
                 >
                   <h2 className="text-3xl font-bold text-blue-600 mb-4">
                     {service.title}
                   </h2>
-                  <p className="text-gray-700 mb-6">{service.description}</p>
+                  <p className="text-gray-700 text-lg mb-6">
+                    {service.description}
+                  </p>
                   <h3 className="text-xl font-semibold text-gray-800 mb-4">
                     Service Includes:
                   </h3>
-                  <ul className="space-y-2">
+                  <ul className="space-y-3 mb-8">
                     {service.features.map((feature, i) => (
                       <li key={i} className="flex items-start">
                         <svg
-                          className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0"
+                          className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -230,172 +262,232 @@ const ServicesSection = () => {
                       </li>
                     ))}
                   </ul>
-                  <button className="mt-8 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-md font-medium transition-colors duration-300">
+                  <a
+                    href="#contact"
+                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition duration-300"
+                  >
                     Book This Service
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Call to Action */}
-        <div className="bg-gray-50 py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+      {/* Call to Action */}
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Ready for a Cleaner Space?
             </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl mb-8 max-w-3xl mx-auto">
               Contact Camacho Cleaning Services today for a free estimate and
               discover the difference professional cleaning can make.
             </p>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-8 rounded-md font-medium text-lg transition-colors duration-300">
-              Get a Free Quote
-            </button>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <a
+                href="/contact"
+                className="bg-white text-blue-600 py-3 px-8 rounded-lg font-bold hover:bg-gray-100 transition duration-300"
+              >
+                Get a Free Quote
+              </a>
+              <a
+                href="tel:6195551234"
+                className="bg-blue-800 text-white py-3 px-8 rounded-lg font-bold hover:bg-blue-900 transition duration-300"
+              >
+                Call Us: (619) 555-1234
+              </a>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Testimonials */}
-        <div className="container mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-            What Our Customers Say
-          </h2>
+      {/* Testimonials - Matches Home.jsx style */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              What Our Clients Say
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Read what our satisfied customers have to say about our
+              professional cleaning services.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            {/* Testimonial 1 */}
+            <div className="bg-gray-50 rounded-lg p-8 shadow-md border-l-4 border-blue-500">
               <div className="flex items-center mb-4">
-                <div className="text-yellow-400 flex">
+                <div className="text-yellow-400 flex mr-2">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
                       className="w-5 h-5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
                   ))}
                 </div>
               </div>
-              <p className="text-gray-600 italic mb-4">
+              <p className="text-gray-600 italic mb-6">
                 "Camacho Cleaning Services has been cleaning my home for over a
                 year now, and I couldn't be happier with their work. My house
                 has never been cleaner!"
               </p>
-              <p className="font-semibold text-gray-800">- Maria Johnson</p>
+              <div className="font-medium text-gray-800">- Maria Johnson</div>
+              <div className="text-gray-500 text-sm">Residential Client</div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            {/* Testimonial 2 */}
+            <div className="bg-gray-50 rounded-lg p-8 shadow-md border-l-4 border-blue-500">
               <div className="flex items-center mb-4">
-                <div className="text-yellow-400 flex">
+                <div className="text-yellow-400 flex mr-2">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
                       className="w-5 h-5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
                   ))}
                 </div>
               </div>
-              <p className="text-gray-600 italic mb-4">
+              <p className="text-gray-600 italic mb-6">
                 "As a business owner, I needed a reliable cleaning service for
                 my office. Camacho Cleaning exceeded my expectations with their
                 professionalism and attention to detail."
               </p>
-              <p className="font-semibold text-gray-800">- Robert Smith</p>
+              <div className="font-medium text-gray-800">- Robert Smith</div>
+              <div className="text-gray-500 text-sm">Commercial Client</div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            {/* Testimonial 3 */}
+            <div className="bg-gray-50 rounded-lg p-8 shadow-md border-l-4 border-blue-500">
               <div className="flex items-center mb-4">
-                <div className="text-yellow-400 flex">
+                <div className="text-yellow-400 flex mr-2">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
                       className="w-5 h-5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
                   ))}
                 </div>
               </div>
-              <p className="text-gray-600 italic mb-4">
+              <p className="text-gray-600 italic mb-6">
                 "I hired Camacho Cleaning for a deep clean before hosting a
                 family event. They transformed my home in just a few hours! I'm
                 now a regular customer."
               </p>
-              <p className="font-semibold text-gray-800">- Jennifer Davis</p>
+              <div className="font-medium text-gray-800">- Jennifer Davis</div>
+              <div className="text-gray-500 text-sm">
+                Specialized Cleaning Client
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* FAQ Section */}
-        <div className="bg-gray-50 py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+          <div className="text-center mt-10">
+            <a
+              href="#contact"
+              className="inline-block bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition duration-300"
+            >
+              See More Reviews
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
               Frequently Asked Questions
             </h2>
-            <div className="max-w-3xl mx-auto space-y-6">
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                  How often should I schedule cleaning services?
-                </h3>
-                <p className="text-gray-600">
-                  The frequency depends on your specific needs. Many residential
-                  clients prefer weekly or bi-weekly service, while businesses
-                  might require daily cleaning. We can help you determine the
-                  optimal schedule during your consultation.
-                </p>
-              </div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Get answers to common questions about our cleaning services.
+            </p>
+          </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                  Do I need to provide cleaning supplies?
-                </h3>
-                <p className="text-gray-600">
-                  No, Camacho Cleaning Services brings all necessary cleaning
-                  supplies and equipment. We use eco-friendly products that are
-                  safe for your family, pets, and the environment.
-                </p>
-              </div>
+          <div className="max-w-3xl mx-auto space-y-6">
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                How often should I schedule cleaning services?
+              </h3>
+              <p className="text-gray-600">
+                The frequency depends on your specific needs. Many residential
+                clients prefer weekly or bi-weekly service, while businesses
+                might require daily cleaning. We can help you determine the
+                optimal schedule during your consultation.
+              </p>
+            </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                  Is your staff bonded and insured?
-                </h3>
-                <p className="text-gray-600">
-                  Yes, all our cleaning professionals are thoroughly
-                  background-checked, bonded, and insured. We prioritize your
-                  security and peace of mind.
-                </p>
-              </div>
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                Do I need to provide cleaning supplies?
+              </h3>
+              <p className="text-gray-600">
+                No, Camacho Cleaning Services brings all necessary cleaning
+                supplies and equipment. We use eco-friendly products that are
+                safe for your family, pets, and the environment.
+              </p>
+            </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                  What if I'm not satisfied with the cleaning?
-                </h3>
-                <p className="text-gray-600">
-                  Customer satisfaction is our top priority. If you're not
-                  completely satisfied with any aspect of our service, please
-                  let us know within 24 hours, and we'll return to address any
-                  areas of concern at no additional cost.
-                </p>
-              </div>
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                Is your staff bonded and insured?
+              </h3>
+              <p className="text-gray-600">
+                Yes, all our cleaning professionals are thoroughly
+                background-checked, bonded, and insured. We prioritize your
+                security and peace of mind.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                What if I'm not satisfied with the cleaning?
+              </h3>
+              <p className="text-gray-600">
+                Customer satisfaction is our top priority. If you're not
+                completely satisfied with any aspect of our service, please let
+                us know within 24 hours, and we'll return to address any areas
+                of concern at no additional cost.
+              </p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Why Choose Us */}
-        <div className="container mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-            Why Choose Camacho Cleaning
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      {/* Why Choose Us - Matching Home.jsx style */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Why Choose Camacho Cleaning
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              We're committed to providing the highest quality cleaning services
+              with attention to detail and customer satisfaction.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-blue-100 rounded-full p-5 mx-auto w-20 h-20 flex items-center justify-center mb-6">
                 <svg
                   className="w-10 h-10 text-blue-600"
                   fill="none"
@@ -411,7 +503,7 @@ const ServicesSection = () => {
                   ></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-xl font-bold text-gray-800 mb-3">
                 Trusted Professionals
               </h3>
               <p className="text-gray-600">
@@ -421,7 +513,7 @@ const ServicesSection = () => {
             </div>
 
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-blue-100 rounded-full p-5 mx-auto w-20 h-20 flex items-center justify-center mb-6">
                 <svg
                   className="w-10 h-10 text-blue-600"
                   fill="none"
@@ -437,7 +529,7 @@ const ServicesSection = () => {
                   ></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-xl font-bold text-gray-800 mb-3">
                 Satisfaction Guaranteed
               </h3>
               <p className="text-gray-600">
@@ -447,7 +539,7 @@ const ServicesSection = () => {
             </div>
 
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-blue-100 rounded-full p-5 mx-auto w-20 h-20 flex items-center justify-center mb-6">
                 <svg
                   className="w-10 h-10 text-blue-600"
                   fill="none"
@@ -463,7 +555,7 @@ const ServicesSection = () => {
                   ></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-xl font-bold text-gray-800 mb-3">
                 Eco-Friendly Products
               </h3>
               <p className="text-gray-600">
@@ -473,7 +565,7 @@ const ServicesSection = () => {
             </div>
 
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto mb-4">
+              <div className="bg-blue-100 rounded-full p-5 mx-auto w-20 h-20 flex items-center justify-center mb-6">
                 <svg
                   className="w-10 h-10 text-blue-600"
                   fill="none"
@@ -489,7 +581,7 @@ const ServicesSection = () => {
                   ></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-xl font-bold text-gray-800 mb-3">
                 Consistent & Reliable
               </h3>
               <p className="text-gray-600">
@@ -499,25 +591,30 @@ const ServicesSection = () => {
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Final CTA */}
-        <div className="bg-blue-600 py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold text-white mb-6">
+      {/* Final CTA */}
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Experience the Camacho Cleaning Difference
             </h2>
-            <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
+            <p className="text-xl mb-8 max-w-3xl mx-auto">
               Join our satisfied customers and discover why Camacho Cleaning is
               the preferred choice for residential and commercial cleaning
               services.
             </p>
-            <button className="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-md text-lg transition-colors duration-300">
+            <a
+              href="/contact"
+              className="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-lg shadow-md transition duration-300"
+            >
               Schedule Your Cleaning Today
-            </button>
+            </a>
           </div>
         </div>
-      </div>
-    </>
+      </section>
+    </div>
   );
 };
 

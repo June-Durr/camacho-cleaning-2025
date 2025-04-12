@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import QuoteForm from "./QuoteForm";
-
+import carpet from "../assets/carpet.png";
 const WhyHero = () => {
   const [isQuoteFormOpen, setIsQuoteFormOpen] = useState(false);
 
@@ -75,7 +75,7 @@ const WhyHero = () => {
           <div className="md:w-1/2">
             <div className="relative rounded-lg shadow-2xl overflow-hidden">
               <img
-                src="/api/placeholder/600/500"
+                src={carpet}
                 alt="Camacho Cleaning Team"
                 className="w-full h-auto"
                 onError={(e) => {
