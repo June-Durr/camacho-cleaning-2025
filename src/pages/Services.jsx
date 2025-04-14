@@ -4,6 +4,17 @@ import HeroMain from "../assets/HeroMain.png";
 import carpet from "../assets/carpet.png";
 import woodfloor from "../assets/woodfloor.jpg";
 import spraycarpet from "../assets/spraycarpet.jpg";
+import arearug from "../assets/arearug.jpg";
+import upholstery from "../assets/upholstery.jpg";
+import lobby from "../assets/lobby.webp";
+import commercialfloor from "../assets/commercialfloor.jpg";
+import commercialrug from "../assets/commercialrug.jpg";
+import residentialrug from "../assets/residentialrug.jpg";
+import residentialfloor from "../assets/residentialfloor.jpg";
+import movein from "../assets/movein.jpg";
+import floorpolishing from "../assets/floorpolishing.jpg";
+import floorwaxing from "../assets/floorwaxing.jpg";
+import buffing from "../assets/buffing.jpg";
 
 const ServicesSection = () => {
   const [activeTab, setActiveTab] = useState("carpet");
@@ -36,7 +47,7 @@ const ServicesSection = () => {
           "Stain and spot treatment",
           "Deodorizing treatment",
         ],
-        image: spraycarpet,
+        image: upholstery,
       },
       {
         id: "area-rug-cleaning",
@@ -50,12 +61,12 @@ const ServicesSection = () => {
           "Fringe cleaning",
           "Proper drying techniques",
         ],
-        image: spraycarpet,
+        image: arearug,
       },
     ],
     floor: [
       {
-        id: "floor-buffing",
+        id: "floor-buffing-polishing",
         title: "Floor Buffing & Polishing",
         description:
           "Restore the shine and luster to your hard floors with our professional buffing and polishing service. We use high-quality equipment and products to bring out the natural beauty of your floors and provide a protective shine.",
@@ -66,7 +77,7 @@ const ServicesSection = () => {
           "Works on multiple floor types",
           "Extends floor lifespan",
         ],
-        image: woodfloor,
+        image: floorpolishing,
       },
       {
         id: "floor-waxing",
@@ -80,21 +91,21 @@ const ServicesSection = () => {
           "Makes future cleaning easier",
           "Prolongs floor life",
         ],
-        image: woodfloor,
+        image: floorwaxing,
       },
       {
-        id: "hardwood-refinishing",
-        title: "Hardwood Floor Refinishing",
+        id: "professional-floor-buffing",
+        title: "Professional Floor Buffing",
         description:
-          "Breathe new life into your worn or damaged hardwood floors with our refinishing service. We carefully sand away imperfections, apply new stain if desired, and finish with a protective sealant for beautiful, long-lasting results.",
+          "Enhance the shine and appearance of your hard floors with our professional buffing service. We'll leave your floors looking polished and revitalized.",
         features: [
-          "Removes scratches and damage",
-          "Options for stain color changes",
-          "Satin, semi-gloss, or high-gloss finish",
-          "Extends floor lifespan by years",
-          "Increases property value",
+          "Increases floor shine and gloss",
+          "Removes light scuffs and marks",
+          "Improves the overall appearance of the floor",
+          "Can be applied to various hard floor types (tile, vinyl, linoleum, etc.)",
+          "Provides a smooth and clean finish",
         ],
-        image: woodfloor,
+        image: buffing,
       },
     ],
     residential: [
@@ -110,7 +121,7 @@ const ServicesSection = () => {
           "Safe for children and pets",
           "Scheduled maintenance programs available",
         ],
-        image: carpet,
+        image: residentialrug,
       },
       {
         id: "residential-floor-care",
@@ -124,7 +135,7 @@ const ServicesSection = () => {
           "Enhancement of your home's appearance",
           "Scheduled maintenance available",
         ],
-        image: woodfloor,
+        image: residentialfloor,
       },
       {
         id: "move-in-out",
@@ -138,7 +149,7 @@ const ServicesSection = () => {
           "Removal of previous tenant marks and stains",
           "Property manager and landlord approved results",
         ],
-        image: spraycarpet,
+        image: movein,
       },
     ],
     commercial: [
@@ -154,7 +165,7 @@ const ServicesSection = () => {
           "LEED-compliant cleaning methods",
           "Scheduled maintenance programs",
         ],
-        image: carpet,
+        image: commercialrug,
       },
       {
         id: "commercial-floor-maintenance",
@@ -168,7 +179,7 @@ const ServicesSection = () => {
           "After-hours service available",
           "Emergency service for spills or damage",
         ],
-        image: woodfloor,
+        image: lobby,
       },
       {
         id: "industrial-floor-care",
@@ -182,7 +193,7 @@ const ServicesSection = () => {
           "Concrete sealing and polishing",
           "Schedule that works around production",
         ],
-        image: woodfloor,
+        image: commercialfloor,
       },
     ],
   };
@@ -251,70 +262,71 @@ const ServicesSection = () => {
 
           {/* Service Content */}
           <div>
-            {services[activeTab].map((service, index) => (
-              <div
-                key={service.id}
-                className={`flex flex-col md:flex-row items-center mb-20 ${
-                  index % 2 === 1 ? "md:flex-row-reverse" : ""
-                }`}
-              >
-                <div className="md:w-1/2 mb-8 md:mb-0">
-                  <div className="bg-gray-200 rounded-lg h-64 md:h-96 w-full overflow-hidden shadow-lg">
-                    {/* Display service image */}
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src =
-                          "https://via.placeholder.com/800x600?text=" +
-                          service.title;
-                      }}
-                    />
-                  </div>
-                </div>
+            {services[activeTab] &&
+              services[activeTab].map((service, index) => (
                 <div
-                  className={`md:w-1/2 ${
-                    index % 2 === 1 ? "md:pr-12" : "md:pl-12"
+                  key={service.id}
+                  className={`flex flex-col md:flex-row items-center mb-20 ${
+                    index % 2 === 1 ? "md:flex-row-reverse" : ""
                   }`}
                 >
-                  <h2 className="text-3xl font-bold text-blue-600 mb-4">
-                    {service.title}
-                  </h2>
-                  <p className="text-gray-700 text-lg mb-6">
-                    {service.description}
-                  </p>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                    Service Includes:
-                  </h3>
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-start">
-                        <svg
-                          className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span className="text-gray-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href="#contact"
-                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition duration-300"
+                  <div className="md:w-1/2 mb-8 md:mb-0">
+                    <div className="bg-gray-200 rounded-lg h-64 md:h-96 w-full overflow-hidden shadow-lg">
+                      {/* Display service image */}
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src =
+                            "https://via.placeholder.com/800x600?text=" +
+                            service.title;
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className={`md:w-1/2 ${
+                      index % 2 === 1 ? "md:pr-12" : "md:pl-12"
+                    }`}
                   >
-                    Get a Free Quote
-                  </a>
+                    <h2 className="text-3xl font-bold text-blue-600 mb-4">
+                      {service.title}
+                    </h2>
+                    <p className="text-gray-700 text-lg mb-6">
+                      {service.description}
+                    </p>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                      Service Includes:
+                    </h3>
+                    <ul className="space-y-3 mb-8">
+                      {service.features.map((feature, i) => (
+                        <li key={i} className="flex items-start">
+                          <svg
+                            className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          <span className="text-gray-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href="#contact"
+                      className="inline-block bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition duration-300"
+                    >
+                      Get a Free Quote
+                    </a>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </section>

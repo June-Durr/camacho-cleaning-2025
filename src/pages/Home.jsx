@@ -1,7 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import Hero from "../components/Hero";
+import FAQ from "../components/FAQ";
 
 const Home = () => {
+  const [formStatus, setFormStatus] = useState({
+    submitting: false,
+    success: false,
+    error: null,
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus({ submitting: true, success: false, error: null });
+
+    // Get form data
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      // You'll need to replace this with your actual form submission endpoint
+      const response = await fetch("https://api.yourdomain.com/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      // Clear form
+      e.target.reset();
+
+      // Show success message
+      setFormStatus({ submitting: false, success: true, error: null });
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setFormStatus((prev) => ({ ...prev, success: false }));
+      }, 5000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormStatus({
+        submitting: false,
+        success: false,
+        error:
+          "There was a problem submitting your message. Please try again or call us directly.",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Hero />
@@ -11,16 +61,16 @@ const Home = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              Our Cleaning Services
+              Our Specialized Cleaning Services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We offer a wide range of professional cleaning services to meet
-              all your needs, from regular home cleaning to specialized
-              commercial solutions.
+              We offer professional cleaning services focused on deep carpet
+              cleaning and floor buffing & waxing for both residential and
+              commercial properties throughout Fairfield County, Connecticut.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {/* Service 1 */}
             <div className="bg-blue-50 rounded-lg p-8 shadow-md hover:shadow-lg transition duration-300">
               <div className="text-blue-600 mb-4">
@@ -40,11 +90,12 @@ const Home = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-3">
-                Residential Cleaning
+                Deep Carpet Cleaning
               </h3>
               <p className="text-gray-600 mb-4">
-                Our comprehensive residential cleaning services cover all areas
-                of your home, from kitchen to bathroom, bedroom to living room.
+                Our professional deep cleaning services remove embedded dirt,
+                allergens, stains, and odors that regular vacuuming can't reach,
+                restoring your carpets to like-new condition.
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-center">
@@ -60,7 +111,7 @@ const Home = () => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  Weekly & Bi-weekly Cleaning
+                  Residential & Commercial Carpets
                 </li>
                 <li className="flex items-center">
                   <svg
@@ -75,7 +126,7 @@ const Home = () => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  Deep Cleaning
+                  Area Rug Cleaning
                 </li>
                 <li className="flex items-center">
                   <svg
@@ -90,11 +141,11 @@ const Home = () => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  Move-in/Move-out Cleaning
+                  Upholstery Cleaning
                 </li>
               </ul>
               <a
-                href="#contact"
+                href="/services"
                 className="text-blue-600 font-medium hover:text-blue-800 transition duration-300"
               >
                 Learn More →
@@ -120,11 +171,12 @@ const Home = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-3">
-                Commercial Cleaning
+                Floor Buffing & Waxing
               </h3>
               <p className="text-gray-600 mb-4">
-                Keep your business space spotless and professional with our
-                tailored commercial cleaning services.
+                Restore shine and protect your floors with our professional
+                buffing and waxing services. We bring out the natural beauty of
+                your floors while creating a durable protective finish.
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-center">
@@ -140,7 +192,7 @@ const Home = () => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  Office Cleaning
+                  Floor Polishing & Restoration
                 </li>
                 <li className="flex items-center">
                   <svg
@@ -155,7 +207,7 @@ const Home = () => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  Retail Space Cleaning
+                  Residential & Commercial Floors
                 </li>
                 <li className="flex items-center">
                   <svg
@@ -170,96 +222,32 @@ const Home = () => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  Medical Facility Cleaning
+                  Protective Wax Application
                 </li>
               </ul>
               <a
-                href="#contact"
+                href="/services"
                 className="text-blue-600 font-medium hover:text-blue-800 transition duration-300"
               >
                 Learn More →
               </a>
             </div>
+          </div>
 
-            {/* Service 3 */}
-            <div className="bg-blue-50 rounded-lg p-8 shadow-md hover:shadow-lg transition duration-300">
-              <div className="text-blue-600 mb-4">
-                <svg
-                  className="w-12 h-12"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                  ></path>
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3">
-                Specialized Cleaning
-              </h3>
-              <p className="text-gray-600 mb-4">
-                For those special cleaning needs that require extra attention
-                and expertise.
-              </p>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-blue-600 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                  Post-Construction Cleaning
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-blue-600 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                  Carpet & Upholstery Cleaning
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-4 h-4 text-blue-600 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                  Window Cleaning
-                </li>
-              </ul>
-              <a
-                href="#contact"
-                className="text-blue-600 font-medium hover:text-blue-800 transition duration-300"
-              >
-                Learn More →
-              </a>
-            </div>
+          <div className="text-center mt-12">
+            <p className="text-xl font-semibold text-blue-700 mb-4">
+              Get Your Free Estimate Today
+            </p>
+            <p className="text-gray-600 mb-6">
+              We provide complimentary quotes for all our services with no
+              obligation. Contact us to schedule your free consultation.
+            </p>
+            <a
+              href="#contact"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white py-3 px-8 rounded-lg font-medium transition duration-300"
+            >
+              Request Free Quote
+            </a>
           </div>
         </div>
       </section>
@@ -273,7 +261,7 @@ const Home = () => {
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               We're committed to providing the highest quality cleaning services
-              with attention to detail and customer satisfaction.
+              for homes and businesses throughout Fairfield County, Connecticut.
             </p>
           </div>
 
@@ -397,12 +385,12 @@ const Home = () => {
               What Our Clients Say
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Read what our satisfied customers have to say about our
-              professional cleaning services.
+              Read what our satisfied customers throughout Fairfield County have
+              to say about our professional cleaning services.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Testimonial 1 */}
             <div className="bg-gray-50 rounded-lg p-8 shadow-md border-l-4 border-blue-500">
               <div className="flex items-center mb-4">
@@ -423,10 +411,11 @@ const Home = () => {
               <p className="text-gray-600 italic mb-6">
                 "Camacho Cleaning Services has been cleaning my home for over a
                 year now, and I couldn't be happier. Their attention to detail
-                is amazing, and my house has never looked better!"
+                with my carpets is amazing, and my house has never looked
+                better!"
               </p>
               <div className="font-medium text-gray-800">- Sarah Johnson</div>
-              <div className="text-gray-500 text-sm">Residential Client</div>
+              <div className="text-gray-500 text-sm">Stamford, CT</div>
             </div>
 
             {/* Testimonial 2 */}
@@ -447,12 +436,14 @@ const Home = () => {
                 </div>
               </div>
               <p className="text-gray-600 italic mb-6">
-                "We've been using Camacho Cleaning Services for our office for
-                the past six months. Their team is professional, thorough, and
-                reliable. Our workspace has never been cleaner!"
+                "We've been using Camacho Cleaning for our office for the past
+                six months. Their floor buffing service is exceptional. Our
+                workspace has never been cleaner or more professional looking!"
               </p>
               <div className="font-medium text-gray-800">- Michael Torres</div>
-              <div className="text-gray-500 text-sm">Commercial Client</div>
+              <div className="text-gray-500 text-sm">
+                Commercial Client, Fairfield
+              </div>
             </div>
 
             {/* Testimonial 3 */}
@@ -473,21 +464,19 @@ const Home = () => {
                 </div>
               </div>
               <p className="text-gray-600 italic mb-6">
-                "After my renovation project, I called Camacho Cleaning for
-                post-construction cleaning. They did an incredible job removing
-                all the dust and debris. I'll definitely use them for regular
-                cleaning going forward!"
+                "After my renovation project, I called Camacho Cleaning for deep
+                carpet cleaning. They did an incredible job removing all the
+                dust and debris. I'll definitely use them for regular cleaning
+                going forward!"
               </p>
               <div className="font-medium text-gray-800">- Jennifer Lopez</div>
-              <div className="text-gray-500 text-sm">
-                Specialized Cleaning Client
-              </div>
+              <div className="text-gray-500 text-sm">Norwalk Resident</div>
             </div>
           </div>
 
           <div className="text-center mt-10">
             <a
-              href="#contact"
+              href="/why"
               className="inline-block bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition duration-300"
             >
               See More Reviews
@@ -496,322 +485,67 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-16 bg-gray-50" id="pricing">
+      {/* Areas We Serve Section */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              Our Pricing Plans
+              Serving Fairfield County, Connecticut
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Affordable cleaning solutions tailored to fit your specific needs
-              and budget.
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We provide premier carpet cleaning and floor care services
+              throughout Fairfield County, including these communities:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Basic Plan */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
-              <div className="bg-blue-600 p-6 text-center">
-                <h3 className="text-xl font-bold text-white">Basic Clean</h3>
-                <div className="text-white text-opacity-80 mt-1">
-                  Perfect for regular maintenance
-                </div>
-                <div className="text-3xl font-bold text-white mt-4">
-                  $89<span className="text-sm font-normal">/visit</span>
-                </div>
-              </div>
-              <div className="p-6">
-                <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>All living areas dusted and vacuumed</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>Kitchen and bathroom sanitizing</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>Floor cleaning</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>Trash removal</span>
-                  </li>
-                </ul>
-                <div className="mt-8">
-                  <a
-                    href="#contact"
-                    className="block text-center bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition duration-300"
-                  >
-                    Book Now
-                  </a>
-                </div>
-              </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-4xl mx-auto">
+            <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+              <p className="font-medium text-gray-800">Stamford</p>
             </div>
-
-            {/* Standard Plan */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform scale-105 z-10">
-              <div className="bg-blue-700 p-6 text-center relative">
-                <div className="absolute top-0 right-0 bg-yellow-400 text-blue-900 text-xs font-bold px-3 py-1 transform translate-x-2 -translate-y-0 rotate-45">
-                  POPULAR
-                </div>
-                <h3 className="text-xl font-bold text-white">Deep Clean</h3>
-                <div className="text-white text-opacity-80 mt-1">
-                  For thorough cleaning needs
-                </div>
-                <div className="text-3xl font-bold text-white mt-4">
-                  $129<span className="text-sm font-normal">/visit</span>
-                </div>
-              </div>
-              <div className="p-6">
-                <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>All Basic Clean services</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>Deep carpet cleaning</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>Inside cabinets and appliances</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>Baseboards and door frames</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>Window sills and blinds</span>
-                  </li>
-                </ul>
-                <div className="mt-8">
-                  <a
-                    href="#contact"
-                    className="block text-center bg-blue-700 text-white py-3 rounded-lg font-medium hover:bg-blue-800 transition duration-300"
-                  >
-                    Book Now
-                  </a>
-                </div>
-              </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+              <p className="font-medium text-gray-800">Greenwich</p>
             </div>
-
-            {/* Premium Plan */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
-              <div className="bg-blue-600 p-6 text-center">
-                <h3 className="text-xl font-bold text-white">Premium Clean</h3>
-                <div className="text-white text-opacity-80 mt-1">
-                  The ultimate cleaning experience
-                </div>
-                <div className="text-3xl font-bold text-white mt-4">
-                  $189<span className="text-sm font-normal">/visit</span>
-                </div>
-              </div>
-              <div className="p-6">
-                <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>All Deep Clean services</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>Wall washing</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>Interior window cleaning</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>Chandelier and light fixture cleaning</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-blue-600 mr-2 mt-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>Priority scheduling</span>
-                  </li>
-                </ul>
-                <div className="mt-8">
-                  <a
-                    href="#contact"
-                    className="block text-center bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition duration-300"
-                  >
-                    Book Now
-                  </a>
-                </div>
-              </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+              <p className="font-medium text-gray-800">Norwalk</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+              <p className="font-medium text-gray-800">Fairfield</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+              <p className="font-medium text-gray-800">Westport</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+              <p className="font-medium text-gray-800">Danbury</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+              <p className="font-medium text-gray-800">Bridgeport</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+              <p className="font-medium text-gray-800">Darien</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+              <p className="font-medium text-gray-800">New Canaan</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+              <p className="font-medium text-gray-800">Ridgefield</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+              <p className="font-medium text-gray-800">Trumbull</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+              <p className="font-medium text-gray-800">Shelton</p>
             </div>
           </div>
 
           <div className="text-center mt-10">
-            <p className="text-gray-600 mb-4">
-              Need a custom plan for your specific needs?
+            <p className="text-gray-600">
+              Not sure if we serve your area? Contact us today to find out!
             </p>
-            <a
-              href="#contact"
-              className="inline-block bg-white border border-blue-600 text-blue-600 py-3 px-6 rounded-lg font-medium hover:bg-blue-50 transition duration-300"
-            >
-              Request a Custom Quote
-            </a>
           </div>
         </div>
       </section>
+
+      <FAQ />
 
       {/* Contact Section */}
       <section className="py-16 bg-white" id="contact">
@@ -828,7 +562,27 @@ const Home = () => {
 
           <div className="flex flex-col md:flex-row gap-10">
             <div className="md:w-1/2">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                {formStatus.success && (
+                  <div
+                    className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+                    role="alert"
+                  >
+                    <strong className="font-bold">Success! </strong>
+                    <span className="block sm:inline">
+                      Your message has been sent. We'll get back to you shortly.
+                    </span>
+                  </div>
+                )}
+                {formStatus.error && (
+                  <div
+                    className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                    role="alert"
+                  >
+                    <strong className="font-bold">Error! </strong>
+                    <span className="block sm:inline">{formStatus.error}</span>
+                  </div>
+                )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label
@@ -840,8 +594,10 @@ const Home = () => {
                     <input
                       type="text"
                       id="name"
+                      name="name"
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                       placeholder="Your name"
+                      required
                     />
                   </div>
                   <div>
@@ -854,8 +610,10 @@ const Home = () => {
                     <input
                       type="email"
                       id="email"
+                      name="email"
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                       placeholder="your@email.com"
+                      required
                     />
                   </div>
                 </div>
@@ -869,8 +627,10 @@ const Home = () => {
                   <input
                     type="tel"
                     id="phone"
+                    name="phone"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-                    placeholder="(123) 456-7890"
+                    placeholder="(203) 536-0834"
+                    required
                   />
                 </div>
                 <div>
@@ -882,13 +642,36 @@ const Home = () => {
                   </label>
                   <select
                     id="service"
+                    name="service"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                    required
                   >
                     <option value="">Select a service</option>
+                    <option value="deep-carpet-cleaning">
+                      Deep Carpet Cleaning
+                    </option>
+                    <option value="floor-buffing">
+                      Floor Buffing & Waxing
+                    </option>
                     <option value="residential">Residential Cleaning</option>
                     <option value="commercial">Commercial Cleaning</option>
-                    <option value="specialized">Specialized Cleaning</option>
                   </select>
+                </div>
+                <div>
+                  <label
+                    htmlFor="address"
+                    className="block text-gray-700 font-medium mb-2"
+                  >
+                    Address or Zip Code
+                  </label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                    placeholder="Your address or zip code"
+                    required
+                  />
                 </div>
                 <div>
                   <label
@@ -899,17 +682,20 @@ const Home = () => {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows="5"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                     placeholder="Tell us about your cleaning needs..."
+                    required
                   ></textarea>
                 </div>
                 <div>
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition duration-300"
+                    disabled={formStatus.submitting}
+                    className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition duration-300 disabled:bg-blue-400 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {formStatus.submitting ? "Sending..." : "Send Message"}
                   </button>
                 </div>
               </form>
@@ -947,8 +733,9 @@ const Home = () => {
                       <h4 className="font-medium text-gray-800">
                         Our Location
                       </h4>
-                      <p className="text-gray-600 mt-1">
-                        123 Cleaning Street, San Diego, CA 92101
+                      <p className="text-gray-600 mt-1">Stamford, CT 06902</p>
+                      <p className="text-gray-600">
+                        Serving all of Fairfield County
                       </p>
                     </div>
                   </div>
@@ -973,7 +760,14 @@ const Home = () => {
                       <h4 className="font-medium text-gray-800">
                         Phone Number
                       </h4>
-                      <p className="text-gray-600 mt-1">(619) 555-1234</p>
+                      <p className="text-gray-600 mt-1">
+                        <a
+                          href="tel:2035360834"
+                          className="hover:text-blue-600 transition-colors"
+                        >
+                          (203) 536-0834
+                        </a>
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -998,7 +792,12 @@ const Home = () => {
                         Email Address
                       </h4>
                       <p className="text-gray-600 mt-1">
-                        info@camachocleaning.com
+                        <a
+                          href="mailto:alberto.camachojr@gmail.com"
+                          className="hover:text-blue-600 transition-colors"
+                        >
+                          alberto.camachojr@gmail.com
+                        </a>
                       </p>
                     </div>
                   </div>
@@ -1058,22 +857,6 @@ const Home = () => {
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path>
-                      </svg>
-                    </a>
-                    <a
-                      href="#"
-                      className="bg-blue-100 p-3 rounded-full text-blue-600 hover:bg-blue-200 transition duration-300"
-                    >
-                      <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0
-                0 01 2 18.407a11.616 11.616 0 006.29 1.84"
-                        ></path>
                       </svg>
                     </a>
                   </div>

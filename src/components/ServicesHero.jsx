@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import QuoteForm from "../components/QuoteForm";
 import CarpetResidential from "../assets/CarpetResidential.jpg";
-import woodfloor from "../assets/woodfloor.jpg";
 
 const ServicesHero = () => {
   const [isQuoteFormOpen, setIsQuoteFormOpen] = useState(false);
